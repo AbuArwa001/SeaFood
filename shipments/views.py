@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from django.contrib.auth.models import User
+from .serializers import ShipmentSerializer
+from .models import Shipment
 
-# Create your views here.
+class ShipmentViewSet(viewsets.ModelViewSet):
+    queryset = Shipment.objects.all()
+    serializer_class = ShipmentSerializer
