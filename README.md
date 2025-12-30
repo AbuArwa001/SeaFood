@@ -116,8 +116,8 @@ Sale → Payment
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/your-repo.git
-cd your-repo
+git clone https://github.com/AbuArwa001/SeaFood.git
+cd SeaFood
 ```
 
 ### 2. Create Virtual Environment
@@ -130,7 +130,7 @@ source venv/bin/activate
 ### 3. Install Dependencies
 
 ```bash
-pip install django psycopg2-binary
+pip install -r requirements.txt
 ```
 
 ### 4. Configure Environment
