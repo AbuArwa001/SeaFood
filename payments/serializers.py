@@ -1,23 +1,17 @@
+from rest_framework import serializers
+from .models import Payment
 
-# --------------------
-# Payments
-# --------------------
-import uuid
-from currencies.models import Currency
-from sales.models import Sale
-from users.models import User
-from django.db import models
-
-
-class Payment(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+class PaymentSerializer(serializers.ModelSerializer):
+    """
+    Docstring for PaymentSerializer
+        id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     sale = models.ForeignKey(
         Sale,
         on_delete=models.CASCADE,
         related_name="payments"
     )
     entered_by = models.ForeignKey(
-        User,
+        models.User,
         on_delete=models.PROTECT,
         related_name="payments"
     )
@@ -31,6 +25,17 @@ class Payment(models.Model):
     expected_payment_date = models.DateField()
     actual_payment_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.buyer_name} - {self.amount_paid}"
+    """
+    class Meta:
+        model = Payment
+        fields = (
+            'id',
+            'sale',
+            'entered_by',
+            'currency',
+            'buyer_name',
+            'amount_paid',
+            'expected_payment_date',
+            'actual_payment_date',
+            'created_at',
+        )

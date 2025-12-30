@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Payment
+from .serializers import PaymentSerializer
 
-# Create your views here.
+
+class PaymentViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing payment instances.
+    """
+    serializer_class = PaymentSerializer
+    queryset = Payment.objects.all()

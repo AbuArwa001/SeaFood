@@ -26,6 +26,8 @@ api_v1_patterns = [
     path('', include('supplierpurchases.urls')),
     path('', include('sales.urls')),
     path('', include('costledgers.urls')),
+    path('', include('currencies.urls')),
+    path('', include('payments.urls')),
 ]
 
 urlpatterns = [
