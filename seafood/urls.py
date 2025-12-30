@@ -23,7 +23,7 @@ api_v1_patterns = [
     path('', include('users.urls')),
     path('', include('shipments.urls')),
     path('', include('logisticsreceipts.urls')),
-    path('', include('supplierpurchase.urls')),
+    path('', include('supplierpurchases.urls')),
 ]
 
 urlpatterns = [

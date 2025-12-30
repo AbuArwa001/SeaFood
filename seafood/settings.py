@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     # Custom Apps
     'users',
     'shipments',
-    'supplierpurchase',
+    'supplierpurchases',
+    'logisticsreceipts',
 ]
 
 MIDDLEWARE = [

@@ -2,14 +2,15 @@
 # Logistics Receipts
 # --------------------
 import uuid
-from shipments import models
+from shipments.models import Shipment
+from django.db import models
 from users.models import User
 
 
 class LogisticsReceipt(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     shipment = models.ForeignKey(
-        models.Shipment,
+        Shipment,
         on_delete=models.CASCADE,
         related_name="logistics_receipts"
     )
