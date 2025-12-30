@@ -1,4 +1,5 @@
 from django.db import models
+from currencies.models import Currency
 from shipments.models import Shipment
 from users.models import User
 import uuid
@@ -11,6 +12,11 @@ class SupplierPurchase(models.Model):
     shipment = models.ForeignKey(
         Shipment,
         on_delete=models.CASCADE,
+        related_name="supplier_purchases"
+    )
+    currency = models.ForeignKey(
+        Currency,
+        on_delete=models.PROTECT,
         related_name="supplier_purchases"
     )
     entered_by = models.ForeignKey(

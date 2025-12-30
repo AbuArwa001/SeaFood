@@ -1,6 +1,8 @@
 from django.db import models
 import uuid
 
+from currencies.models import Currency
+
 # --------------------
 # Shipments
 # --------------------
@@ -14,7 +16,11 @@ class Shipment(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product_name = models.CharField(max_length=255)
-    currency = models.CharField(max_length=10)
+    currency = models.ForeignKey(
+        Currency,
+        on_delete=models.PROTECT,
+        related_name="shipments"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     country_origin = models.CharField(max_length=100)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)

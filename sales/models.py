@@ -1,4 +1,5 @@
 from django.db import models
+from currencies.models import Currency
 from shipments.models import Shipment
 from users.models import User
 import uuid
@@ -15,6 +16,11 @@ class Sale(models.Model):
     )
     entered_by = models.ForeignKey(
         User,
+        on_delete=models.PROTECT,
+        related_name="sales"
+    )
+    currency = models.ForeignKey(
+        Currency,
         on_delete=models.PROTECT,
         related_name="sales"
     )

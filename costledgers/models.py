@@ -56,6 +56,7 @@ class CostLedger(models.Model):
         null=True,
         help_text="Required if category is Miscellaneous"
     )
+    currncy = models.CharField(max_length=10, default="USD")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
