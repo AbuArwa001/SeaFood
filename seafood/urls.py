@@ -22,6 +22,7 @@ api_v1_patterns = [
     path('', root_app.home, name=''),
     path('', include('users.urls')),
     path('', include('shipments.urls')),
+    path('', include('logisticsreceipts.urls')),
     path('', include('supplierpurchase.urls')),
 ]
 

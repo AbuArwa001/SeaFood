@@ -11,6 +11,7 @@ def home(request):
                      "URLS": {
                          "users": "/api/v1/users/",
                          "shipments": "/api/v1/shipments/",
+                        "logistics_receipts": "/api/v1/logistics-receipts/",
                          "supplier_purchases": "/api/v1/supplier_purchases/",
                      },
                      "version": "1.0.0",
