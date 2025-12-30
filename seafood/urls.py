@@ -24,6 +24,8 @@ api_v1_patterns = [
     path('', include('shipments.urls')),
     path('', include('logisticsreceipts.urls')),
     path('', include('supplierpurchases.urls')),
+    path('', include('sales.urls')),
+    path('', include('costledgers.urls')),
 ]
 
 urlpatterns = [

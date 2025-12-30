@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Sale, ShipmentLogisticsReceipt
+from .models import Sale
 from users.serializers import UserSerializer
 from shipments.serializers import ShipmentSerializer
 
