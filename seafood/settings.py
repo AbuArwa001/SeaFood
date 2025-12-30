@@ -14,7 +14,9 @@ SECRET_KEY = 'django-insecure-90t+ia0awso=tr&xi2nmcgq9v$i-w#64%r7n62+ui4xj0s_ps&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'seafood-4308.onrender.com',
+]
 
 
 # Application definition
