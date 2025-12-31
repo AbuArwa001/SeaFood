@@ -16,6 +16,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'seafood-4308.onrender.com',
+    '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -43,6 +45,10 @@ INSTALLED_APPS = [
     'costledgers',
     'currencies',
     'payments',
+    'exchangerates',
+    'unitofmeasures',
+    'productcategories',
+    'products',
 ]
 
 MIDDLEWARE = [

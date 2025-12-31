@@ -17,7 +17,11 @@ def home(request):
                         "cost_ledgers": f"{request.scheme}://{request.get_host()}/api/v1/cost_ledgers/",
                         "currencies": f"{request.scheme}://{request.get_host()}/api/v1/currencies/",
                         "payments": f"{request.scheme}://{request.get_host()}/api/v1/payments/",
+                        "exchange_rates": f"{request.scheme}://{request.get_host()}/api/v1/exchange-rates/",
+                        "unit_of_measures": f"{request.scheme}://{request.get_host()}/api/v1/unit-of-measures/",
+                        "product_categories": f"{request.scheme}://{request.get_host()}/api/v1/product-categories/",
                         "products": f"{request.scheme}://{request.get_host()}/api/v1/products/",
+
                      },
                      "version": "1.0.0",
                      "documentation_url": "/docs/",

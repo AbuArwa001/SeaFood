@@ -38,6 +38,9 @@ class CostLedger(models.Model):
             'shipment',
             'entered_by',
             'cost_category',
+            'exchange_rate_used',
+            'converted_amount',
+            'currency',
             'amount',
             'created_at',
         ]

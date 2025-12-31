@@ -1,4 +1,6 @@
 from django.db import models
+from currencies.models import Currency
+from exchangerates.models import ExchangeRate
 from shipments.models import Shipment
 from users.models import User
 import uuid
@@ -56,8 +58,40 @@ class CostLedger(models.Model):
         null=True,
         help_text="Required if category is Miscellaneous"
     )
-    currncy = models.CharField(max_length=10, default="USD")
+    currency = models.ForeignKey(
+        Currency,
+        on_delete=models.PROTECT,
+        related_name='cost_ledgers'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
-
+    exchange_rate_used = models.DecimalField(
+        max_digits=12,
+        decimal_places=6,
+        null=True,
+        blank=True
+    )
+    converted_amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2
+    )
     def __str__(self):
         return f"{self.cost_category} - {self.amount}"
+    def save(self, *args, **kwargs):
+        shipment_currency = self.shipment.currency
+
+        if self.currency != shipment_currency:
+            rate = ExchangeRate.objects.filter(
+                from_currency=self.currency,
+                to_currency=shipment_currency,
+                rate_date__lte=self.created_at.date()
+            ).order_by("-rate_date").first()
+
+            if not rate:
+                raise ValueError("Missing exchange rate")
+
+            self.exchange_rate_used = rate.rate
+            self.converted_amount = self.amount * rate.rate
+        else:
+            self.converted_amount = self.amount
+
+        super().save(*args, **kwargs)
