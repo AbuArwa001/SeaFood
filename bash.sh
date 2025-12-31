@@ -18,7 +18,8 @@ pip install -r requirements.txt
 
 python manage.py makemigrations
 # Apply database migrations
-python manage.py migrate
+python manage.py migrate --run-syncdb
+# python manage.py migrate
 
 # Collect static files
 python manage.py collectstatic --noinput

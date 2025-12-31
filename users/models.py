@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import Permission
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin, BaseUserManager)
 import uuid
 
@@ -9,7 +10,11 @@ import uuid
 class Role(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     role_name = models.CharField(max_length=100)
-
+    permissions = models.ManyToManyField(
+        Permission,
+        blank=True,
+        related_name="roles"
+    )
     def __str__(self):
         return self.role_name
 
@@ -59,4 +64,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.full_name
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.role:
+            self.user_permissions.set(self.role.permissions.all())
 
