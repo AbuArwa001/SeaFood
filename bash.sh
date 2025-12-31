@@ -20,6 +20,6 @@ python manage.py makemigrations
 # Apply database migrations
 python manage.py migrate --run-syncdb
 # python manage.py migrate
-
+python manage.py seed_currencies
 # Collect static files
 python manage.py collectstatic --noinput
