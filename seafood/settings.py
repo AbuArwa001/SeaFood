@@ -144,3 +144,7 @@ REST_FRAMEWORK = {
     ],
 }
 
+# ADMIN CREDENTIALS
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
+ADMIN_PASSWORD =  os.getenv("ADMIN_PASSWORD")
+ADMIN_LOCATION = os.getenv("ADMIN_LOCATION", "Headquarters")

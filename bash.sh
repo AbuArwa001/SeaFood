@@ -21,5 +21,6 @@ python manage.py makemigrations
 python manage.py migrate --run-syncdb
 # python manage.py migrate
 python manage.py seed_currencies
+python manage.py create_admin
 # Collect static files
 python manage.py collectstatic --noinput
