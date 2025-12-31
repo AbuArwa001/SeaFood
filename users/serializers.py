@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import User
+from django.contrib.auth.models import AnonymousUser
+from .models import User, Role
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -24,4 +25,43 @@ class UserSerializer(serializers.ModelSerializer):
             'role',
             'full_name',
             'location',
+        ]
+
+    def validate_role(self, value):
+        """
+        Ensure that only Admins can create users with the 'Admin' role.
+        """
+        request = self.context.get('request')
+        if not request:
+            return value
+        print( f"WHO IS THIS {type(request.user)}",request.user)
+        if isinstance(request.user, AnonymousUser):
+            print("Anonymous user trying to assign role")
+            if value.role_name == "Admin":
+                raise serializers.ValidationError("Only an Admin can assign the Admin role.")
+        # Check if the role being assigned is "Admin"
+        if value.role_name == "Admin" and getattr(request.user.role, 'role_name', None) != "Admin":
+            raise serializers.ValidationError("Only an Admin can assign the Admin role.")
+        
+        # Otherwise it's fine (anyone can assign "User" role)
+        return value
+
+class RoleSerializer(serializers.ModelSerializer):
+    """
+    Docstring for RoleSerializer
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    role_name = models.CharField(max_length=100)
+    permissions = models.ManyToManyField(
+        Permission,
+        blank=True,
+        related_name="roles"
+    )
+    """
+    id = serializers.UUIDField(read_only=True)
+    class Meta:
+        model = Role
+        fields = [
+            'id',
+            'role_name',
+            'permissions',
         ]

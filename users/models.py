@@ -22,21 +22,40 @@ class Role(models.Model):
 # UserManager
 # --------------------
 class UserManager(BaseUserManager):
-    def create_user(self, email, full_name, location, role, password=None):
+    def create_user(self, email, full_name, location, role, password=None, **extra_fields):
         if not email:
             raise ValueError("Users must have an email address")
+
         email = self.normalize_email(email)
-        user = self.model(email=email, full_name=full_name, location=location, role=role)
+        user = self.model(
+            email=email,
+            full_name=full_name,
+            location=location,
+            role=role,
+            **extra_fields
+        )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, full_name, location, role, password):
-        user = self.create_user(email, full_name, location, role, password)
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
+    def create_superuser(self, email, full_name, location, role, password=None, **extra_fields):
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_active", True)
 
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("Superuser must have is_staff=True")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("Superuser must have is_superuser=True")
+
+        return self.create_user(
+            email=email,
+            full_name=full_name,
+            location=location,
+            role=role,
+            password=password,
+            **extra_fields
+        )
 
 # --------------------
 # Users
@@ -60,13 +79,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name',]
+    REQUIRED_FIELDS = ['full_name', 'location', 'role']
 
     def __str__(self):
         return self.full_name
-    
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if self.role:
-            self.user_permissions.set(self.role.permissions.all())
 

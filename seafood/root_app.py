@@ -10,6 +10,7 @@ def home(request):
                      "status": "API is running smoothly",
                      "URLS": {
                         "users": f"{request.scheme}://{request.get_host()}/api/v1/users/",
+                        "roles": f"{request.scheme}://{request.get_host()}/api/v1/roles/",
                         "shipments": f"{request.scheme}://{request.get_host()}/api/v1/shipments/",
                         "logistics_receipts": f"{request.scheme}://{request.get_host()}/api/v1/logistics-receipts/",
                         "supplier_purchases": f"{request.scheme}://{request.get_host()}/api/v1/supplier_purchases/",
