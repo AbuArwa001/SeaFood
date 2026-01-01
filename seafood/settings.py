@@ -1,5 +1,9 @@
+import json
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -148,3 +152,8 @@ REST_FRAMEWORK = {
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD =  os.getenv("ADMIN_PASSWORD")
 ADMIN_LOCATION = os.getenv("ADMIN_LOCATION", "Headquarters")
+# ADMIN_ROLES = os.getenv("ADMIN_ROLES", "Admin").split(",")
+ADMIN_ROLES = os.getenv("ADMIN_ROLES", "Admin")
+ROLE_CAPABILITIES = json.loads(
+    os.getenv("ROLE_CAPABILITIES_JSON", "{}")
+)

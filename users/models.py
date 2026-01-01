@@ -9,7 +9,7 @@ import uuid
 # --------------------
 class Role(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    role_name = models.CharField(max_length=100)
+    role_name = models.CharField(max_length=100, unique=True)
     permissions = models.ManyToManyField(
         Permission,
         blank=True,
@@ -56,7 +56,19 @@ class UserManager(BaseUserManager):
             password=password,
             **extra_fields
         )
+    def has_perm(self, perm, obj=None):
+        if self.is_superuser:
+            return True
 
+        if self.role and self.role.permissions.filter(
+            codename=perm.split(".")[-1]
+        ).exists():
+            return True
+
+        return False
+
+    def has_perms(self, perm_list, obj=None):
+        return all(self.has_perm(perm) for perm in perm_list)
 # --------------------
 # Users
 # --------------------

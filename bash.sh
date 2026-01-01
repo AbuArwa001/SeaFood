@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-VIRTUAL_ENV_DIR="./venv"
+VIRTUAL_ENV_DIR=".venv"
 
 # Create virtual environment if it doesn't exist
 if [ ! -d "$VIRTUAL_ENV_DIR" ]; then
@@ -10,7 +10,7 @@ fi
 # Activate the virtual environment
 if [ -z "$VIRTUAL_ENV_DIR" ]; then
     echo "Activating virtual environment..."
-    source ./venv/bin/activate
+    source .venv/bin/activate
 fi
 
 # Install any new dependencies
