@@ -28,7 +28,8 @@ class Shipment(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
     def __str__(self):
-        return f"{self.product_name} ({self.status})"
+        return f"Shipment {self.id} ({self.status})"
+
 class ShipmentItem(models.Model):
     """
     This connects Products to Shipments and tracks how many of 
@@ -50,3 +51,4 @@ class ShipmentItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in {self.shipment.id}"
+    
