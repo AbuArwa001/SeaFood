@@ -1,7 +1,9 @@
+
 from django.db import models
 import uuid
 
 from currencies.models import Currency
+from products.models import Product
 
 # --------------------
 # Shipments
@@ -15,7 +17,7 @@ class Shipment(models.Model):
     )
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    product_name = models.CharField(max_length=255)
+
     currency = models.ForeignKey(
         Currency,
         on_delete=models.PROTECT,
@@ -27,4 +29,24 @@ class Shipment(models.Model):
 
     def __str__(self):
         return f"{self.product_name} ({self.status})"
+class ShipmentItem(models.Model):
+    """
+    This connects Products to Shipments and tracks how many of 
+    each product are in a specific shipment.
+    """
+    shipment = models.ForeignKey(
+        Shipment, 
+        on_delete=models.CASCADE, 
+        related_name="items"
+    )
+    product = models.ForeignKey(
+        Product, 
+        on_delete=models.PROTECT, 
+        related_name="shipment_items"
+    )
+    quantity = models.PositiveIntegerField()
+    # You might also want to snapshot the price at time of shipping
+    price_at_shipping = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} in {self.shipment.id}"

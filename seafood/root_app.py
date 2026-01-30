@@ -19,7 +19,7 @@ def home(request):
                         "currencies": f"{request.scheme}://{request.get_host()}/api/v1/currencies/",
                         "payments": f"{request.scheme}://{request.get_host()}/api/v1/payments/",
                         "exchange_rates": f"{request.scheme}://{request.get_host()}/api/v1/exchange-rates/",
-                        "unit_of_measures": f"{request.scheme}://{request.get_host()}/api/v1/unit-of-measures/",
+                        "unit_of_measures": f"{request.scheme}://{request.get_host()}/api/v1/unitofmeasures/",
                         "product_categories": f"{request.scheme}://{request.get_host()}/api/v1/productcategories/",
                         "products": f"{request.scheme}://{request.get_host()}/api/v1/products/",
 

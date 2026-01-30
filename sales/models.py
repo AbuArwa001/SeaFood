@@ -44,24 +44,30 @@ class Sale(models.Model):
 
     def __str__(self):
         return f"Sale {self.total_sale_amount}"
-    
     def save(self, *args, **kwargs):
+        # 1. Use the current date if the sale is new
+        reference_date = self.created_at.date() if self.created_at else timezone.now().date()
+        
         shipment_currency = self.shipment.currency
 
         if self.currency != shipment_currency:
-            rate = ExchangeRate.objects.filter(
+            # 2. Look up the rate
+            rate_obj = ExchangeRate.objects.filter(
                 from_currency=self.currency,
                 to_currency=shipment_currency,
-                rate_date__lte=self.created_at.date()
-            ).order_by("-rate_date").first()
+                rate_date__lte=reference_date
+            ).first() # ordering is handled by Meta on ExchangeRate
 
-            if not rate:
-                raise ValueError("Missing exchange rate")
+            if not rate_obj:
+                raise ValueError(f"No exchange rate found for {self.currency} to {shipment_currency} on {reference_date}")
 
-            self.exchange_rate_used = rate.rate
-            self.converted_amount = self.amount * rate.rate
+            self.exchange_rate_used = rate_obj.rate
+            # 3. Calculate based on your actual field names (quantity * price)
+            self.total_sale_amount = self.quantity_sold * self.selling_price
+            self.converted_amount = self.total_sale_amount * self.exchange_rate_used
         else:
             self.exchange_rate_used = Decimal("1.0")
-            self.converted_amount = self.amount
+            self.total_sale_amount = self.quantity_sold * self.selling_price
+            self.converted_amount = self.total_sale_amount
 
         super().save(*args, **kwargs)
