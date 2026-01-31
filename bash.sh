@@ -20,8 +20,9 @@ python manage.py makemigrations
 # Apply database migrations
 python manage.py migrate --run-syncdb
 # python manage.py migrate
-python manage.py seed_currencies
-python manage.py sync_rates
-python manage.py create_admin
+python manage.py loaddata data.json
+# python manage.py seed_currencies
+# python manage.py sync_rates
+# python manage.py create_admin
 # Collect static files
 python manage.py collectstatic --noinput
