@@ -59,17 +59,17 @@ for i, (name, location) in enumerate(user_names):
         }
     })
 
-# 3. Currencies (10 items)
+# 3. Currencies (10 items - replaced EUR with MZN)
 currencies_data = [
     ("USD", "US Dollar", "$"),
     ("KES", "Kenyan Shilling", "KSh"),
-    ("EUR", "Euro", "€"),
+    ("TZS", "Tanzanian Shilling", "TSh"),
+    ("MZN", "Mozambique Metical", "MT"),
+    ("CNY", "Chinese Yuan (Renminbi)", "¥"),
     ("GBP", "British Pound", "£"),
     ("JPY", "Japanese Yen", "¥"),
-    ("CNY", "Chinese Yuan", "¥"),
     ("AED", "UAE Dirham", "د.إ"),
     ("SAR", "Saudi Riyal", "﷼"),
-    ("TZS", "Tanzanian Shilling", "TSh"),
     ("UGX", "Ugandan Shilling", "USh"),
 ]
 
@@ -89,23 +89,24 @@ for code, name, symbol in currencies_data:
         }
     })
 
-# 4. Exchange Rates (15 items - various pairs)
+# 4. Exchange Rates - Updated to match user's data
+# Primary rates to KSH (from user's image)
 exchange_pairs = [
-    ("USD", "KES", 150.50),
-    ("EUR", "KES", 165.75),
-    ("GBP", "KES", 190.25),
-    ("USD", "EUR", 0.92),
+    ("TZS", "KES", 0.0501461648),
+    ("MZN", "KES", 2.040500443),
+    ("CNY", "KES", 18.7291117),
+    ("USD", "KES", 130.094298),
+    # Additional useful pairs
+    ("GBP", "KES", 165.00),
+    ("JPY", "KES", 0.88),
+    ("AED", "KES", 35.40),
+    ("SAR", "KES", 34.70),
+    ("UGX", "KES", 0.035),
+    # Reverse pairs for conversions
     ("USD", "GBP", 0.79),
-    ("JPY", "KES", 1.05),
-    ("CNY", "KES", 21.30),
-    ("AED", "KES", 41.00),
-    ("SAR", "KES", 40.10),
-    ("TZS", "KES", 0.065),
-    ("UGX", "KES", 0.040),
-    ("EUR", "USD", 1.09),
-    ("GBP", "USD", 1.27),
     ("USD", "JPY", 148.50),
     ("USD", "CNY", 7.25),
+    ("USD", "TZS", 2350.00),
 ]
 
 for from_code, to_code, rate in exchange_pairs:
@@ -338,7 +339,7 @@ print("Breakdown:")
 print(f"  - Roles: 2")
 print(f"  - Users: 10")
 print(f"  - Currencies: 10")
-print(f"  - Exchange Rates: 15")
+print(f"  - Exchange Rates: 13")
 print(f"  - Product Categories: 10")
 print(f"  - Units of Measure: 10")
 print(f"  - Products: 15")

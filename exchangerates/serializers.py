@@ -13,10 +13,10 @@ class CurrencySerializer(serializers.ModelSerializer):
         ]
 
 class ExchangeRateSerializer(serializers.ModelSerializer):
-    # from_currency = CurrencySerializer(read_only=True)
+    from_currency = CurrencySerializer(read_only=True)
     from_curr = serializers.CharField(source='from_currency.code', read_only=True)
     to_curr = serializers.CharField(source='to_currency.code', read_only=True)
-    # to_currency = CurrencySerializer(read_only=True)
+    to_currency = CurrencySerializer(read_only=True)
     class Meta:
         model = ExchangeRate
         fields = [
