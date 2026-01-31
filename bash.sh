@@ -21,6 +21,7 @@ python manage.py makemigrations
 python manage.py migrate --run-syncdb
 # python manage.py migrate
 python manage.py loaddata data.json
+python reset_passwords.py
 # python manage.py seed_currencies
 # python manage.py sync_rates
 # python manage.py create_admin
