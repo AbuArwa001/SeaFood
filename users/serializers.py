@@ -17,12 +17,15 @@ class UserSerializer(serializers.ModelSerializer):
     location = models.CharField(max_length=255)
     """
     id = serializers.UUIDField(read_only=True)
+    role_name = serializers.CharField(source='role.role_name', read_only=True)
+    
     class Meta:
         model = User
         fields = [
             'id',
             'email',
             'role',
+            'role_name',
             'full_name',
             'location',
         ]

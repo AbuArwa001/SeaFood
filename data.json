@@ -1,0 +1,2072 @@
+[
+  {
+    "model": "users.role",
+    "pk": "02915c14-1092-4733-ae0a-f3067a27b67e",
+    "fields": {
+      "role_name": "Admin",
+      "permissions": []
+    }
+  },
+  {
+    "model": "users.role",
+    "pk": "44e21482-44c9-45a2-a62f-4124354bddcf",
+    "fields": {
+      "role_name": "Manager",
+      "permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": true,
+      "email": "user1@seafood.com",
+      "role_id": "02915c14-1092-4733-ae0a-f3067a27b67e",
+      "full_name": "Managing Director",
+      "location": "Headquarters",
+      "is_active": true,
+      "is_staff": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user2@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Operations Manager",
+      "location": "Nairobi",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-02T10:00:00Z",
+      "updated_at": "2026-01-02T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user3@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Finance Officer",
+      "location": "Mombasa",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-03T10:00:00Z",
+      "updated_at": "2026-01-03T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user4@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Logistics Coordinator",
+      "location": "Nairobi",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-04T10:00:00Z",
+      "updated_at": "2026-01-04T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user5@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Sales Manager",
+      "location": "Headquarters",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-05T10:00:00Z",
+      "updated_at": "2026-01-05T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "eb19b7e4-9d41-4770-993b-1c5773b895ac",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user6@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Procurement Officer",
+      "location": "Mombasa",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-06T10:00:00Z",
+      "updated_at": "2026-01-06T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "04fa10b3-64cf-4471-9eb9-8e825ae51b0b",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user7@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Quality Control",
+      "location": "Nairobi",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-07T10:00:00Z",
+      "updated_at": "2026-01-07T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "fe0f63a1-3334-4634-83a7-f94144cdf317",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user8@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Warehouse Supervisor",
+      "location": "Mombasa",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-08T10:00:00Z",
+      "updated_at": "2026-01-08T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "d1d7ce8f-9905-4f1b-90b4-ccee4e1e8d6c",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user9@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Accounts Manager",
+      "location": "Headquarters",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-09T10:00:00Z",
+      "updated_at": "2026-01-09T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "1439b410-a5ae-4f22-9479-b5638e849111",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "user10@seafood.com",
+      "role_id": "44e21482-44c9-45a2-a62f-4124354bddcf",
+      "full_name": "Export Coordinator",
+      "location": "Nairobi",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-01-10T10:00:00Z",
+      "updated_at": "2026-01-10T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+    "fields": {
+      "code": "USD",
+      "name": "US Dollar",
+      "symbol": "$",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+    "fields": {
+      "code": "KES",
+      "name": "Kenyan Shilling",
+      "symbol": "KSh",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "b37f9a90-4ea6-45ce-ad85-396ca28fc5a8",
+    "fields": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "\u20ac",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "72c80190-61b9-4a2b-b5ee-4db79c67b67c",
+    "fields": {
+      "code": "GBP",
+      "name": "British Pound",
+      "symbol": "\u00a3",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "aa07cf2a-fa52-4d65-a4ed-8c9f24a29ccd",
+    "fields": {
+      "code": "JPY",
+      "name": "Japanese Yen",
+      "symbol": "\u00a5",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "dddc3a5c-5037-405d-9ebb-06b8e2a6b985",
+    "fields": {
+      "code": "CNY",
+      "name": "Chinese Yuan",
+      "symbol": "\u00a5",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "ecdd1f7d-d8d0-4ab0-845a-9404f1cb79c9",
+    "fields": {
+      "code": "AED",
+      "name": "UAE Dirham",
+      "symbol": "\u062f.\u0625",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "48a66978-fe09-4911-bfa8-95e53cbeb7ee",
+    "fields": {
+      "code": "SAR",
+      "name": "Saudi Riyal",
+      "symbol": "\ufdfc",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "643ac070-b751-45f4-902f-5c60ff5ba958",
+    "fields": {
+      "code": "TZS",
+      "name": "Tanzanian Shilling",
+      "symbol": "TSh",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "currencies.currency",
+    "pk": "5a44a7a6-e3c1-4b25-b23d-48794d098e14",
+    "fields": {
+      "code": "UGX",
+      "name": "Ugandan Shilling",
+      "symbol": "USh",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "7c150725-c278-4336-97ab-220b3e79e415",
+    "fields": {
+      "from_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "150.5",
+      "rate_date": "2026-01-20",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "b4375f7f-475d-4c99-b7cb-5c11761584a2",
+    "fields": {
+      "from_currency_id": "b37f9a90-4ea6-45ce-ad85-396ca28fc5a8",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "165.75",
+      "rate_date": "2026-01-26",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "81c6c790-f377-4421-a4e5-fb687d9b2cc8",
+    "fields": {
+      "from_currency_id": "72c80190-61b9-4a2b-b5ee-4db79c67b67c",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "190.25",
+      "rate_date": "2026-01-15",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "543e47e8-fe7d-4afc-929e-ba698c3f5e88",
+    "fields": {
+      "from_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "to_currency_id": "b37f9a90-4ea6-45ce-ad85-396ca28fc5a8",
+      "rate": "0.92",
+      "rate_date": "2026-01-27",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "be10db93-a3d7-4613-9e93-2da52cfac8d1",
+    "fields": {
+      "from_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "to_currency_id": "72c80190-61b9-4a2b-b5ee-4db79c67b67c",
+      "rate": "0.79",
+      "rate_date": "2026-01-16",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "21c09596-b739-4bb3-b82c-b6febd7fb981",
+    "fields": {
+      "from_currency_id": "aa07cf2a-fa52-4d65-a4ed-8c9f24a29ccd",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "1.05",
+      "rate_date": "2026-01-01",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "6d81039c-c7bd-4fbc-b559-d789670c3459",
+    "fields": {
+      "from_currency_id": "dddc3a5c-5037-405d-9ebb-06b8e2a6b985",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "21.3",
+      "rate_date": "2026-01-18",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "3b86a398-9824-45a9-a1a6-40e02933543a",
+    "fields": {
+      "from_currency_id": "ecdd1f7d-d8d0-4ab0-845a-9404f1cb79c9",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "41.0",
+      "rate_date": "2026-01-21",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "2c48fbca-48ba-4e26-9f9d-bfc564aec268",
+    "fields": {
+      "from_currency_id": "48a66978-fe09-4911-bfa8-95e53cbeb7ee",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "40.1",
+      "rate_date": "2026-01-06",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "9047099a-8421-4387-8222-7e04ea38ad93",
+    "fields": {
+      "from_currency_id": "643ac070-b751-45f4-902f-5c60ff5ba958",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "0.065",
+      "rate_date": "2026-01-06",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "6379f3df-30f0-4a69-8c50-5b406fbfb4c3",
+    "fields": {
+      "from_currency_id": "5a44a7a6-e3c1-4b25-b23d-48794d098e14",
+      "to_currency_id": "dbab87ef-04f9-42a9-8fd9-30e834a97c41",
+      "rate": "0.04",
+      "rate_date": "2026-01-13",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "a2b860c3-667b-4ed3-a4d6-50b238d8f4c2",
+    "fields": {
+      "from_currency_id": "b37f9a90-4ea6-45ce-ad85-396ca28fc5a8",
+      "to_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "rate": "1.09",
+      "rate_date": "2026-01-15",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "18235b3f-dea0-4937-a16f-d3de19b617dc",
+    "fields": {
+      "from_currency_id": "72c80190-61b9-4a2b-b5ee-4db79c67b67c",
+      "to_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "rate": "1.27",
+      "rate_date": "2026-01-09",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "384f8437-bc7b-4b5e-a5a5-8dda35919ca2",
+    "fields": {
+      "from_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "to_currency_id": "aa07cf2a-fa52-4d65-a4ed-8c9f24a29ccd",
+      "rate": "148.5",
+      "rate_date": "2026-01-01",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "exchangerates.exchangerate",
+    "pk": "d9230bd0-7d64-43c3-9084-b03da5f3d607",
+    "fields": {
+      "from_currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "to_currency_id": "dddc3a5c-5037-405d-9ebb-06b8e2a6b985",
+      "rate": "7.25",
+      "rate_date": "2026-01-28",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "7d6b605e-16b0-4065-8e97-d8825cc9072e",
+    "fields": {
+      "name": "Fresh Fish",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "f56f670b-095f-4ac6-9c5d-ae0912e6cbf8",
+    "fields": {
+      "name": "Frozen Fish",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "157f71d0-8cac-445a-953f-5138fb24ebab",
+    "fields": {
+      "name": "Shellfish",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "2efefcfa-bf28-4686-909e-fc0d453bd99f",
+    "fields": {
+      "name": "Crustaceans",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "9cd9c8da-86f7-4ee9-b9c1-f63a282f48bc",
+    "fields": {
+      "name": "Mollusks",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "0b2128ec-4a15-4504-b5d3-52dd1577af04",
+    "fields": {
+      "name": "Cephalopods",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "151eb2d2-4c35-4f6f-b476-3cf99ff811d5",
+    "fields": {
+      "name": "Processed Seafood",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "7a14d6a4-442e-4505-8e7e-ac955351a769",
+    "fields": {
+      "name": "Smoked Fish",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "e85d7955-d875-4ce0-a4c6-1465d4a8dcb5",
+    "fields": {
+      "name": "Dried Fish",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "productcategories.productcategory",
+    "pk": "0ea880ed-9b11-4e3c-ac76-fa5641ddaf1f",
+    "fields": {
+      "name": "Canned Seafood",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+    "fields": {
+      "code": "kg",
+      "description": "Kilograms",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "f945cafc-a422-4d2b-9d17-0b4ed0a1ffcc",
+    "fields": {
+      "code": "pcs",
+      "description": "Pieces",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "38f3f524-94cc-4354-a7bd-8723e6a2dc60",
+    "fields": {
+      "code": "ctn",
+      "description": "Cartons",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "0c4cb232-5e7b-49a1-ac71-858891da49a2",
+    "fields": {
+      "code": "lbs",
+      "description": "Pounds",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "861d2f42-8165-478a-b466-35f8e93536c5",
+    "fields": {
+      "code": "ton",
+      "description": "Metric Tons",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "d87c9098-2bc2-4a59-95fb-51658f0e1425",
+    "fields": {
+      "code": "box",
+      "description": "Boxes",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "791d11b5-108c-420c-93dd-23b62df8ba0b",
+    "fields": {
+      "code": "bag",
+      "description": "Bags",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "1dbd5d5d-712e-4086-b7b4-d1c889590ffc",
+    "fields": {
+      "code": "crate",
+      "description": "Crates",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "bfdc94a1-b242-4a0c-a905-cf14c13bc8e0",
+    "fields": {
+      "code": "pallet",
+      "description": "Pallets",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "unitofmeasures.unitofmeasure",
+    "pk": "2b110deb-88be-4020-bc77-8bb88906018a",
+    "fields": {
+      "code": "dozen",
+      "description": "Dozens",
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "49da42dc-4850-4692-8c44-d0ab6059fef4",
+    "fields": {
+      "name": "Nile Perch Fillet",
+      "category_id": "7d6b605e-16b0-4065-8e97-d8825cc9072e",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Premium quality Nile Perch fillets",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "5423737b-f539-4a84-9936-c309e19db33b",
+    "fields": {
+      "name": "Tilapia Whole",
+      "category_id": "7d6b605e-16b0-4065-8e97-d8825cc9072e",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Fresh whole tilapia",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "3eb5ee5f-ede0-4386-974f-4d2f331f1151",
+    "fields": {
+      "name": "Tuna Steaks",
+      "category_id": "f56f670b-095f-4ac6-9c5d-ae0912e6cbf8",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Frozen yellowfin tuna steaks",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "be933e02-0060-4afb-8c65-ca2d04e13d46",
+    "fields": {
+      "name": "King Prawns",
+      "category_id": "2efefcfa-bf28-4686-909e-fc0d453bd99f",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Large king prawns",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "43c09b8f-4c5b-4218-9987-ba12c98ef265",
+    "fields": {
+      "name": "Lobster Tails",
+      "category_id": "2efefcfa-bf28-4686-909e-fc0d453bd99f",
+      "unit_id": "f945cafc-a422-4d2b-9d17-0b4ed0a1ffcc",
+      "description": "Premium lobster tails",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "3ae7ddbc-e7a8-474d-ad0b-c67bc070c048",
+    "fields": {
+      "name": "Octopus",
+      "category_id": "0b2128ec-4a15-4504-b5d3-52dd1577af04",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Fresh octopus",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "e97cb45a-c62e-4044-bb21-03ce020447cc",
+    "fields": {
+      "name": "Squid Rings",
+      "category_id": "0b2128ec-4a15-4504-b5d3-52dd1577af04",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Cleaned squid rings",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "6e0aba41-b9a4-4c84-8566-721c939ef689",
+    "fields": {
+      "name": "Oysters",
+      "category_id": "9cd9c8da-86f7-4ee9-b9c1-f63a282f48bc",
+      "unit_id": "2b110deb-88be-4020-bc77-8bb88906018a",
+      "description": "Fresh oysters",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "4fcedac3-62c1-4a12-b78d-232e718cb186",
+    "fields": {
+      "name": "Mussels",
+      "category_id": "9cd9c8da-86f7-4ee9-b9c1-f63a282f48bc",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Fresh mussels",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "8d665905-55f5-4cf0-bb39-4da36d6f993f",
+    "fields": {
+      "name": "Smoked Salmon",
+      "category_id": "7a14d6a4-442e-4505-8e7e-ac955351a769",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Premium smoked salmon",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "77c2634b-7573-40e3-9903-4e56a5739ed0",
+    "fields": {
+      "name": "Dried Anchovies",
+      "category_id": "e85d7955-d875-4ce0-a4c6-1465d4a8dcb5",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Sun-dried anchovies",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "4aeaba73-3012-4f90-a6e5-bff84e4547d2",
+    "fields": {
+      "name": "Canned Tuna",
+      "category_id": "0ea880ed-9b11-4e3c-ac76-fa5641ddaf1f",
+      "unit_id": "38f3f524-94cc-4354-a7bd-8723e6a2dc60",
+      "description": "Canned tuna in oil",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "9e05cb77-de03-42a4-a4ec-438ccd6c6e36",
+    "fields": {
+      "name": "Crab Meat",
+      "category_id": "2efefcfa-bf28-4686-909e-fc0d453bd99f",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Fresh crab meat",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "0992e579-4a21-4610-a8ea-20a9f2583100",
+    "fields": {
+      "name": "Mackerel Frozen",
+      "category_id": "f56f670b-095f-4ac6-9c5d-ae0912e6cbf8",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Frozen mackerel",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "3150137d-dc86-4c3e-9a88-d1048b1cc64e",
+    "fields": {
+      "name": "Sardines Fresh",
+      "category_id": "7d6b605e-16b0-4065-8e97-d8825cc9072e",
+      "unit_id": "b0658a70-c0ef-4e95-a4a1-fa4919103dac",
+      "description": "Fresh sardines",
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-01T10:00:00Z",
+      "country_origin": "Kenya",
+      "status": "CREATED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "1749536d-0154-4eeb-9619-c101033c2b89",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-04T10:00:00Z",
+      "country_origin": "Tanzania",
+      "status": "CREATED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "ba51d19c-9699-447d-b380-ef7c7082343a",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-07T10:00:00Z",
+      "country_origin": "Uganda",
+      "status": "CREATED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "567edc64-29ce-404b-81c9-e518c6e132ae",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-10T10:00:00Z",
+      "country_origin": "Somalia",
+      "status": "IN_TRANSIT"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "998266a4-08a4-46a2-ab64-f12a21c10268",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-13T10:00:00Z",
+      "country_origin": "Seychelles",
+      "status": "IN_TRANSIT"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-16T10:00:00Z",
+      "country_origin": "Mauritius",
+      "status": "IN_TRANSIT"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-19T10:00:00Z",
+      "country_origin": "Kenya",
+      "status": "RECEIVED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-22T10:00:00Z",
+      "country_origin": "Tanzania",
+      "status": "RECEIVED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "981178f6-a036-4973-a9ff-a39bc3722104",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-25T10:00:00Z",
+      "country_origin": "Uganda",
+      "status": "RECEIVED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "f9165a6c-fbc8-4760-a631-fcbe84a3fc05",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-28T10:00:00Z",
+      "country_origin": "Somalia",
+      "status": "COMPLETED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "80feec76-24e6-41f3-8244-7b332983e50e",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-31T10:00:00Z",
+      "country_origin": "Seychelles",
+      "status": "COMPLETED"
+    }
+  },
+  {
+    "model": "shipments.shipment",
+    "pk": "442e0641-79e4-4efa-b044-787a3eb9d1ff",
+    "fields": {
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-02-03T10:00:00Z",
+      "country_origin": "Mauritius",
+      "status": "COMPLETED"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "product_id": "49da42dc-4850-4692-8c44-d0ab6059fef4",
+      "quantity": 415,
+      "price_at_shipping": "49.14"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "product_id": "5423737b-f539-4a84-9936-c309e19db33b",
+      "quantity": 150,
+      "price_at_shipping": "31.82"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "product_id": "3eb5ee5f-ede0-4386-974f-4d2f331f1151",
+      "quantity": 332,
+      "price_at_shipping": "6.22"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "567edc64-29ce-404b-81c9-e518c6e132ae",
+      "product_id": "be933e02-0060-4afb-8c65-ca2d04e13d46",
+      "quantity": 384,
+      "price_at_shipping": "31.28"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "998266a4-08a4-46a2-ab64-f12a21c10268",
+      "product_id": "43c09b8f-4c5b-4218-9987-ba12c98ef265",
+      "quantity": 448,
+      "price_at_shipping": "45.73"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+      "product_id": "3ae7ddbc-e7a8-474d-ad0b-c67bc070c048",
+      "quantity": 70,
+      "price_at_shipping": "49.01"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+      "product_id": "e97cb45a-c62e-4044-bb21-03ce020447cc",
+      "quantity": 261,
+      "price_at_shipping": "28.96"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+      "product_id": "6e0aba41-b9a4-4c84-8566-721c939ef689",
+      "quantity": 478,
+      "price_at_shipping": "48.25"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "981178f6-a036-4973-a9ff-a39bc3722104",
+      "product_id": "4fcedac3-62c1-4a12-b78d-232e718cb186",
+      "quantity": 172,
+      "price_at_shipping": "36.91"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "f9165a6c-fbc8-4760-a631-fcbe84a3fc05",
+      "product_id": "8d665905-55f5-4cf0-bb39-4da36d6f993f",
+      "quantity": 111,
+      "price_at_shipping": "28.35"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "80feec76-24e6-41f3-8244-7b332983e50e",
+      "product_id": "77c2634b-7573-40e3-9903-4e56a5739ed0",
+      "quantity": 427,
+      "price_at_shipping": "45.89"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "442e0641-79e4-4efa-b044-787a3eb9d1ff",
+      "product_id": "4aeaba73-3012-4f90-a6e5-bff84e4547d2",
+      "quantity": 137,
+      "price_at_shipping": "9.69"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "product_id": "9e05cb77-de03-42a4-a4ec-438ccd6c6e36",
+      "quantity": 334,
+      "price_at_shipping": "48.06"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "product_id": "0992e579-4a21-4610-a8ea-20a9f2583100",
+      "quantity": 414,
+      "price_at_shipping": "42.89"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "product_id": "3150137d-dc86-4c3e-9a88-d1048b1cc64e",
+      "quantity": 373,
+      "price_at_shipping": "30.55"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "567edc64-29ce-404b-81c9-e518c6e132ae",
+      "product_id": "49da42dc-4850-4692-8c44-d0ab6059fef4",
+      "quantity": 290,
+      "price_at_shipping": "6.04"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "998266a4-08a4-46a2-ab64-f12a21c10268",
+      "product_id": "5423737b-f539-4a84-9936-c309e19db33b",
+      "quantity": 191,
+      "price_at_shipping": "5.03"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+      "product_id": "3eb5ee5f-ede0-4386-974f-4d2f331f1151",
+      "quantity": 355,
+      "price_at_shipping": "22.79"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+      "product_id": "be933e02-0060-4afb-8c65-ca2d04e13d46",
+      "quantity": 237,
+      "price_at_shipping": "36.77"
+    }
+  },
+  {
+    "model": "shipments.shipmentitem",
+    "fields": {
+      "shipment_id": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+      "product_id": "43c09b8f-4c5b-4218-9987-ba12c98ef265",
+      "quantity": 311,
+      "price_at_shipping": "19.7"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "bc36ab5a-5f1c-433e-a42e-405f569dc015",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "kg_purchased": "455.42",
+      "image_url": "",
+      "created_at": "2026-01-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "6ed09e9f-e0c6-4801-a288-1eac7aeba569",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "kg_purchased": "940.33",
+      "image_url": "",
+      "created_at": "2026-01-04T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "6a3bf373-872c-406f-9f19-df089050b115",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "kg_purchased": "891.87",
+      "image_url": "",
+      "created_at": "2026-01-07T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "293a6f0f-c6cc-4748-8e18-d45c0c9e94f5",
+    "fields": {
+      "shipment_id": "567edc64-29ce-404b-81c9-e518c6e132ae",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "kg_purchased": "917.61",
+      "image_url": "",
+      "created_at": "2026-01-10T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "9f890167-2c59-41b1-9f4f-c29b8a0fd6d6",
+    "fields": {
+      "shipment_id": "998266a4-08a4-46a2-ab64-f12a21c10268",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "kg_purchased": "345.64",
+      "image_url": "",
+      "created_at": "2026-01-13T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "5e3edbf4-082c-4bab-8f7d-6b358f1ccce3",
+    "fields": {
+      "shipment_id": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "eb19b7e4-9d41-4770-993b-1c5773b895ac",
+      "kg_purchased": "254.17",
+      "image_url": "",
+      "created_at": "2026-01-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "d88bb1e5-e6af-42d7-a7b9-1c287a0c98a5",
+    "fields": {
+      "shipment_id": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "04fa10b3-64cf-4471-9eb9-8e825ae51b0b",
+      "kg_purchased": "986.3",
+      "image_url": "",
+      "created_at": "2026-01-19T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "ced37ea0-78f6-4ce8-a5d8-d7c32b09d83a",
+    "fields": {
+      "shipment_id": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "fe0f63a1-3334-4634-83a7-f94144cdf317",
+      "kg_purchased": "286.21",
+      "image_url": "",
+      "created_at": "2026-01-22T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "547ff25c-781a-4e0c-9a47-6b7ec35627c0",
+    "fields": {
+      "shipment_id": "981178f6-a036-4973-a9ff-a39bc3722104",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "d1d7ce8f-9905-4f1b-90b4-ccee4e1e8d6c",
+      "kg_purchased": "304.65",
+      "image_url": "",
+      "created_at": "2026-01-25T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "b1de26b2-81da-4f9a-b432-b6033298beec",
+    "fields": {
+      "shipment_id": "f9165a6c-fbc8-4760-a631-fcbe84a3fc05",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "1439b410-a5ae-4f22-9479-b5638e849111",
+      "kg_purchased": "514.32",
+      "image_url": "",
+      "created_at": "2026-01-28T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "2c1b1a3f-c37a-4e50-ba9e-f0bcc621d9ff",
+    "fields": {
+      "shipment_id": "80feec76-24e6-41f3-8244-7b332983e50e",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "kg_purchased": "209.1",
+      "image_url": "",
+      "created_at": "2026-01-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "supplierpurchases.supplierpurchase",
+    "pk": "32ab0483-bb70-4567-9107-6b76dad54f26",
+    "fields": {
+      "shipment_id": "442e0641-79e4-4efa-b044-787a3eb9d1ff",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "kg_purchased": "775.2",
+      "image_url": "",
+      "created_at": "2026-02-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "6b030b61-a809-4cff-a7d7-37b4e286cf10",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "net_received_kg": "694.27",
+      "transport_loss_kg": "7.74",
+      "freezing_loss_kg": "4.16",
+      "facility_location": "Freezer 01 - Nairobi",
+      "notes": "Receipt #1 processed successfully",
+      "created_at": "2026-01-01T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "a01145ff-fd86-41c9-8c6c-ffb337c00852",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "net_received_kg": "425.45",
+      "transport_loss_kg": "1.67",
+      "freezing_loss_kg": "3.9",
+      "facility_location": "Freezer 02 - Mombasa",
+      "notes": "Receipt #2 processed successfully",
+      "created_at": "2026-01-04T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "4559e9e2-dab4-4f32-86a3-1f789f988360",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "net_received_kg": "96.8",
+      "transport_loss_kg": "4.84",
+      "freezing_loss_kg": "0.61",
+      "facility_location": "Cold Storage A - Nairobi",
+      "notes": "Receipt #3 processed successfully",
+      "created_at": "2026-01-07T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "cec052c0-a9ca-45cf-b09d-571f5c99709c",
+    "fields": {
+      "shipment_id": "567edc64-29ce-404b-81c9-e518c6e132ae",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "net_received_kg": "900.31",
+      "transport_loss_kg": "3.5",
+      "freezing_loss_kg": "2.63",
+      "facility_location": "Warehouse B - Mombasa",
+      "notes": "Receipt #4 processed successfully",
+      "created_at": "2026-01-10T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "53f07fff-849e-4132-abe5-be4d3b9c825e",
+    "fields": {
+      "shipment_id": "998266a4-08a4-46a2-ab64-f12a21c10268",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "net_received_kg": "307.68",
+      "transport_loss_kg": "5.55",
+      "freezing_loss_kg": "2.06",
+      "facility_location": "Freezer 01 - Nairobi",
+      "notes": "Receipt #5 processed successfully",
+      "created_at": "2026-01-13T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "a95558eb-400e-4618-87c4-188964f7fbf9",
+    "fields": {
+      "shipment_id": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+      "entered_by_id": "eb19b7e4-9d41-4770-993b-1c5773b895ac",
+      "net_received_kg": "755.2",
+      "transport_loss_kg": "9.9",
+      "freezing_loss_kg": "1.53",
+      "facility_location": "Freezer 02 - Mombasa",
+      "notes": "Receipt #6 processed successfully",
+      "created_at": "2026-01-16T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "74d323f1-e534-4549-a186-3a79dc43ac14",
+    "fields": {
+      "shipment_id": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+      "entered_by_id": "04fa10b3-64cf-4471-9eb9-8e825ae51b0b",
+      "net_received_kg": "618.73",
+      "transport_loss_kg": "1.21",
+      "freezing_loss_kg": "4.86",
+      "facility_location": "Cold Storage A - Nairobi",
+      "notes": "Receipt #7 processed successfully",
+      "created_at": "2026-01-19T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "a3ec516f-97d9-4f36-b7ed-598349ff009b",
+    "fields": {
+      "shipment_id": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+      "entered_by_id": "fe0f63a1-3334-4634-83a7-f94144cdf317",
+      "net_received_kg": "269.96",
+      "transport_loss_kg": "1.55",
+      "freezing_loss_kg": "1.3",
+      "facility_location": "Warehouse B - Mombasa",
+      "notes": "Receipt #8 processed successfully",
+      "created_at": "2026-01-22T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "da560560-2b9f-4751-a800-6ea0b88ebd77",
+    "fields": {
+      "shipment_id": "981178f6-a036-4973-a9ff-a39bc3722104",
+      "entered_by_id": "d1d7ce8f-9905-4f1b-90b4-ccee4e1e8d6c",
+      "net_received_kg": "797.34",
+      "transport_loss_kg": "4.37",
+      "freezing_loss_kg": "4.75",
+      "facility_location": "Freezer 01 - Nairobi",
+      "notes": "Receipt #9 processed successfully",
+      "created_at": "2026-01-25T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "0d1c5c3f-6e31-4e9c-9360-abb21508fa1a",
+    "fields": {
+      "shipment_id": "f9165a6c-fbc8-4760-a631-fcbe84a3fc05",
+      "entered_by_id": "1439b410-a5ae-4f22-9479-b5638e849111",
+      "net_received_kg": "178.02",
+      "transport_loss_kg": "9.79",
+      "freezing_loss_kg": "2.41",
+      "facility_location": "Freezer 02 - Mombasa",
+      "notes": "Receipt #10 processed successfully",
+      "created_at": "2026-01-28T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "0afc070f-c44f-4865-a159-58d596cd4f66",
+    "fields": {
+      "shipment_id": "80feec76-24e6-41f3-8244-7b332983e50e",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "net_received_kg": "201.05",
+      "transport_loss_kg": "5.48",
+      "freezing_loss_kg": "1.06",
+      "facility_location": "Cold Storage A - Nairobi",
+      "notes": "Receipt #11 processed successfully",
+      "created_at": "2026-01-31T14:00:00Z"
+    }
+  },
+  {
+    "model": "logisticsreceipts.logisticsreceipt",
+    "pk": "20ba3017-b1ad-4b7a-932b-ed815a7f40f4",
+    "fields": {
+      "shipment_id": "442e0641-79e4-4efa-b044-787a3eb9d1ff",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "net_received_kg": "645.68",
+      "transport_loss_kg": "8.92",
+      "freezing_loss_kg": "1.81",
+      "facility_location": "Warehouse B - Mombasa",
+      "notes": "Receipt #12 processed successfully",
+      "created_at": "2026-02-03T14:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "df4d520a-b3d0-41d4-a6b9-c037ee5aa563",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "kg_sold": "230.86",
+      "quantity_sold": "230.86",
+      "selling_price": "47.1",
+      "exchange_rate_used": null,
+      "converted_amount": "10873.51",
+      "total_sale_amount": "10873.51",
+      "created_at": "2026-01-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "d359fb09-c6c0-4833-8e94-b557fe128c29",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "kg_sold": "103.93",
+      "quantity_sold": "103.93",
+      "selling_price": "27.32",
+      "exchange_rate_used": null,
+      "converted_amount": "2839.37",
+      "total_sale_amount": "2839.37",
+      "created_at": "2026-01-05T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "95fec0ac-ab27-48c2-931c-57b6d0dfa161",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "kg_sold": "629.13",
+      "quantity_sold": "629.13",
+      "selling_price": "17.88",
+      "exchange_rate_used": null,
+      "converted_amount": "11248.84",
+      "total_sale_amount": "11248.84",
+      "created_at": "2026-01-08T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "5d498e87-f7af-4d68-8871-83debbf15cdb",
+    "fields": {
+      "shipment_id": "567edc64-29ce-404b-81c9-e518c6e132ae",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "kg_sold": "639.29",
+      "quantity_sold": "639.29",
+      "selling_price": "28.6",
+      "exchange_rate_used": null,
+      "converted_amount": "18283.69",
+      "total_sale_amount": "18283.69",
+      "created_at": "2026-01-11T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "90c0d211-6392-4fd3-9ff6-7de5a82b884c",
+    "fields": {
+      "shipment_id": "998266a4-08a4-46a2-ab64-f12a21c10268",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "kg_sold": "695.77",
+      "quantity_sold": "695.77",
+      "selling_price": "15.33",
+      "exchange_rate_used": null,
+      "converted_amount": "10666.15",
+      "total_sale_amount": "10666.15",
+      "created_at": "2026-01-14T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "863b5009-a616-4461-bd5a-f0e050858fd3",
+    "fields": {
+      "shipment_id": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "eb19b7e4-9d41-4770-993b-1c5773b895ac",
+      "kg_sold": "372.58",
+      "quantity_sold": "372.58",
+      "selling_price": "20.2",
+      "exchange_rate_used": null,
+      "converted_amount": "7526.12",
+      "total_sale_amount": "7526.12",
+      "created_at": "2026-01-17T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "7cb70a98-a8aa-4f79-84f4-16be5a031945",
+    "fields": {
+      "shipment_id": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "04fa10b3-64cf-4471-9eb9-8e825ae51b0b",
+      "kg_sold": "141.78",
+      "quantity_sold": "141.78",
+      "selling_price": "37.99",
+      "exchange_rate_used": null,
+      "converted_amount": "5386.22",
+      "total_sale_amount": "5386.22",
+      "created_at": "2026-01-20T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "cd0d3cfa-b724-473c-96de-8af620bd9083",
+    "fields": {
+      "shipment_id": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "fe0f63a1-3334-4634-83a7-f94144cdf317",
+      "kg_sold": "560.46",
+      "quantity_sold": "560.46",
+      "selling_price": "35.55",
+      "exchange_rate_used": null,
+      "converted_amount": "19924.35",
+      "total_sale_amount": "19924.35",
+      "created_at": "2026-01-23T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "07376758-d562-4a8a-be08-602af83fc264",
+    "fields": {
+      "shipment_id": "981178f6-a036-4973-a9ff-a39bc3722104",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "d1d7ce8f-9905-4f1b-90b4-ccee4e1e8d6c",
+      "kg_sold": "415.19",
+      "quantity_sold": "415.19",
+      "selling_price": "25.54",
+      "exchange_rate_used": null,
+      "converted_amount": "10603.95",
+      "total_sale_amount": "10603.95",
+      "created_at": "2026-01-26T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "2090117e-9921-4447-b4f0-53b88c778211",
+    "fields": {
+      "shipment_id": "f9165a6c-fbc8-4760-a631-fcbe84a3fc05",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "1439b410-a5ae-4f22-9479-b5638e849111",
+      "kg_sold": "469.33",
+      "quantity_sold": "469.33",
+      "selling_price": "43.37",
+      "exchange_rate_used": null,
+      "converted_amount": "20354.84",
+      "total_sale_amount": "20354.84",
+      "created_at": "2026-01-29T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "9a6a975b-6829-4349-89e8-7f2c543f45a3",
+    "fields": {
+      "shipment_id": "80feec76-24e6-41f3-8244-7b332983e50e",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "kg_sold": "393.45",
+      "quantity_sold": "393.45",
+      "selling_price": "13.65",
+      "exchange_rate_used": null,
+      "converted_amount": "5370.59",
+      "total_sale_amount": "5370.59",
+      "created_at": "2026-02-01T11:00:00Z"
+    }
+  },
+  {
+    "model": "sales.sale",
+    "pk": "11e9401e-61d5-4ab5-824b-436f54222655",
+    "fields": {
+      "shipment_id": "442e0641-79e4-4efa-b044-787a3eb9d1ff",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "kg_sold": "218.53",
+      "quantity_sold": "218.53",
+      "selling_price": "33.4",
+      "exchange_rate_used": null,
+      "converted_amount": "7298.9",
+      "total_sale_amount": "7298.9",
+      "created_at": "2026-02-04T11:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "b03779e8-47c2-4727-8648-2a2945bcc4f0",
+    "fields": {
+      "sale_id": "df4d520a-b3d0-41d4-a6b9-c037ee5aa563",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company A",
+      "amount_paid": "2301.9",
+      "expected_payment_date": "2026-01-08",
+      "actual_payment_date": null,
+      "created_at": "2026-01-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "455c7696-2873-4530-8812-76e124ed067a",
+    "fields": {
+      "sale_id": "d359fb09-c6c0-4833-8e94-b557fe128c29",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company B",
+      "amount_paid": "6477.97",
+      "expected_payment_date": "2026-01-10",
+      "actual_payment_date": "2026-01-11",
+      "created_at": "2026-01-04T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "1db8bd2f-40bb-4a6e-abc0-21950496ef4d",
+    "fields": {
+      "sale_id": "95fec0ac-ab27-48c2-931c-57b6d0dfa161",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company C",
+      "amount_paid": "3208.36",
+      "expected_payment_date": "2026-01-12",
+      "actual_payment_date": "2026-01-13",
+      "created_at": "2026-01-06T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "ba07df6f-0b27-4d82-9289-46a03e8b197f",
+    "fields": {
+      "sale_id": "5d498e87-f7af-4d68-8871-83debbf15cdb",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company D",
+      "amount_paid": "1975.99",
+      "expected_payment_date": "2026-01-14",
+      "actual_payment_date": null,
+      "created_at": "2026-01-08T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "92d817c0-2c53-4419-abf1-189798bb83db",
+    "fields": {
+      "sale_id": "90c0d211-6392-4fd3-9ff6-7de5a82b884c",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company E",
+      "amount_paid": "1734.01",
+      "expected_payment_date": "2026-01-16",
+      "actual_payment_date": "2026-01-17",
+      "created_at": "2026-01-10T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "d42dcb1e-d00c-45c0-9643-6cb3e2d55b75",
+    "fields": {
+      "sale_id": "863b5009-a616-4461-bd5a-f0e050858fd3",
+      "entered_by_id": "eb19b7e4-9d41-4770-993b-1c5773b895ac",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company F",
+      "amount_paid": "2503.21",
+      "expected_payment_date": "2026-01-18",
+      "actual_payment_date": "2026-01-19",
+      "created_at": "2026-01-12T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "9fec1de4-5386-4b9b-a567-1bd067a02830",
+    "fields": {
+      "sale_id": "7cb70a98-a8aa-4f79-84f4-16be5a031945",
+      "entered_by_id": "04fa10b3-64cf-4471-9eb9-8e825ae51b0b",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company G",
+      "amount_paid": "6283.26",
+      "expected_payment_date": "2026-01-20",
+      "actual_payment_date": null,
+      "created_at": "2026-01-14T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "e61f1786-f26c-41c9-b482-c23830fc4fa7",
+    "fields": {
+      "sale_id": "cd0d3cfa-b724-473c-96de-8af620bd9083",
+      "entered_by_id": "fe0f63a1-3334-4634-83a7-f94144cdf317",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company H",
+      "amount_paid": "7716.29",
+      "expected_payment_date": "2026-01-22",
+      "actual_payment_date": "2026-01-23",
+      "created_at": "2026-01-16T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "550704a8-727f-4f66-9c70-3c9dcd812897",
+    "fields": {
+      "sale_id": "07376758-d562-4a8a-be08-602af83fc264",
+      "entered_by_id": "d1d7ce8f-9905-4f1b-90b4-ccee4e1e8d6c",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company I",
+      "amount_paid": "977.21",
+      "expected_payment_date": "2026-01-24",
+      "actual_payment_date": "2026-01-25",
+      "created_at": "2026-01-18T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "c2d9cc63-9c6b-4f8e-92bd-90c1fc783d41",
+    "fields": {
+      "sale_id": "2090117e-9921-4447-b4f0-53b88c778211",
+      "entered_by_id": "1439b410-a5ae-4f22-9479-b5638e849111",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company J",
+      "amount_paid": "7440.85",
+      "expected_payment_date": "2026-01-26",
+      "actual_payment_date": null,
+      "created_at": "2026-01-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "92dfdc1c-5396-4227-a694-a8c383ff61f6",
+    "fields": {
+      "sale_id": "9a6a975b-6829-4349-89e8-7f2c543f45a3",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company K",
+      "amount_paid": "1341.92",
+      "expected_payment_date": "2026-01-28",
+      "actual_payment_date": "2026-01-29",
+      "created_at": "2026-01-22T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "2e7c7937-0316-45b5-8157-2292f6d9b9df",
+    "fields": {
+      "sale_id": "11e9401e-61d5-4ab5-824b-436f54222655",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company L",
+      "amount_paid": "9525.73",
+      "expected_payment_date": "2026-01-30",
+      "actual_payment_date": "2026-01-31",
+      "created_at": "2026-01-24T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "05686e45-a082-4c09-a007-dc0c3d9df01e",
+    "fields": {
+      "sale_id": "df4d520a-b3d0-41d4-a6b9-c037ee5aa563",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company A",
+      "amount_paid": "8822.45",
+      "expected_payment_date": "2026-02-01",
+      "actual_payment_date": null,
+      "created_at": "2026-01-26T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "8480a79b-6cca-4234-8781-5cf08e479992",
+    "fields": {
+      "sale_id": "d359fb09-c6c0-4833-8e94-b557fe128c29",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company B",
+      "amount_paid": "4527.03",
+      "expected_payment_date": "2026-02-03",
+      "actual_payment_date": "2026-02-04",
+      "created_at": "2026-01-28T10:00:00Z"
+    }
+  },
+  {
+    "model": "payments.payment",
+    "pk": "640252fc-1b39-450d-a9ff-32e14c8fb130",
+    "fields": {
+      "sale_id": "95fec0ac-ab27-48c2-931c-57b6d0dfa161",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "buyer_name": "Buyer Company C",
+      "amount_paid": "2373.41",
+      "expected_payment_date": "2026-02-05",
+      "actual_payment_date": "2026-02-06",
+      "created_at": "2026-01-30T10:00:00Z"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "1ad7d308-ed08-4c5a-bdd8-9c02c16ee6a0",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "cost_category": "Transport",
+      "amount": "3693.16",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-01T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "1585.3"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "2e32debc-6184-452d-a148-602a6265b551",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "cost_category": "Freezing",
+      "amount": "1074.09",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-03T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "4119.26"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "694254c7-eee6-46de-a344-474a489f9050",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "cost_category": "Cold Storage",
+      "amount": "1746.22",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-05T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "736.72"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "0e93648a-8f34-4346-9a5b-1daba379a048",
+    "fields": {
+      "shipment_id": "567edc64-29ce-404b-81c9-e518c6e132ae",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "cost_category": "Packing Materials",
+      "amount": "4785.68",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-07T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "1105.6"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "fc133f68-39dc-4a95-bce2-fd70530ee97d",
+    "fields": {
+      "shipment_id": "998266a4-08a4-46a2-ab64-f12a21c10268",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "cost_category": "Labor",
+      "amount": "1377.72",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-09T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "4198.21"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "18ad43fa-ed44-4ac8-bc2f-da2e07540446",
+    "fields": {
+      "shipment_id": "ac0761fb-8eb1-4f75-9c62-b206dbf29ed7",
+      "entered_by_id": "eb19b7e4-9d41-4770-993b-1c5773b895ac",
+      "cost_category": "Commissions",
+      "amount": "1300.22",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-11T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "2993.49"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "b4f2d9f6-bc89-4c1b-8a4c-142e6ec8ed3d",
+    "fields": {
+      "shipment_id": "dbd88b5a-6265-41c9-9b21-daaaf7afbabe",
+      "entered_by_id": "04fa10b3-64cf-4471-9eb9-8e825ae51b0b",
+      "cost_category": "Export Fees",
+      "amount": "4372.66",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-13T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "354.83"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "c670449d-bf29-4c98-bc4d-60a4b01b7355",
+    "fields": {
+      "shipment_id": "b5194693-cd1c-45e4-a22a-38ee881efd19",
+      "entered_by_id": "fe0f63a1-3334-4634-83a7-f94144cdf317",
+      "cost_category": "Fuel",
+      "amount": "2077.05",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-15T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "2208.75"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "4f7ee195-1165-466d-9c6d-67af14fd642e",
+    "fields": {
+      "shipment_id": "981178f6-a036-4973-a9ff-a39bc3722104",
+      "entered_by_id": "d1d7ce8f-9905-4f1b-90b4-ccee4e1e8d6c",
+      "cost_category": "Transport",
+      "amount": "4767.83",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-17T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "2396.92"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "226a287b-9465-4c2c-9d68-b96e6cdeb973",
+    "fields": {
+      "shipment_id": "f9165a6c-fbc8-4760-a631-fcbe84a3fc05",
+      "entered_by_id": "1439b410-a5ae-4f22-9479-b5638e849111",
+      "cost_category": "Freezing",
+      "amount": "3173.41",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-19T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "3683.72"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "bb93ab7e-7b63-438a-ba01-c63ce9371eb6",
+    "fields": {
+      "shipment_id": "80feec76-24e6-41f3-8244-7b332983e50e",
+      "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
+      "cost_category": "Cold Storage",
+      "amount": "1211.62",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-21T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "2775.67"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "f5060f4f-ecaa-4775-81a5-9177c74946a3",
+    "fields": {
+      "shipment_id": "442e0641-79e4-4efa-b044-787a3eb9d1ff",
+      "entered_by_id": "261863e6-55c1-41ec-a96a-932cc4efdc7f",
+      "cost_category": "Packing Materials",
+      "amount": "4074.63",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-23T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "3136.0"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "8ea83562-ed93-4332-bb3e-7cd0d0b11c3d",
+    "fields": {
+      "shipment_id": "2d705db5-21cc-4b6b-82db-23b30e1c92bf",
+      "entered_by_id": "16300a38-f83c-4ef3-9a5c-f38e1c2d1420",
+      "cost_category": "Labor",
+      "amount": "2067.08",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-25T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "3831.15"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "d2caf235-c49c-48c9-8103-c31a65e8478c",
+    "fields": {
+      "shipment_id": "1749536d-0154-4eeb-9619-c101033c2b89",
+      "entered_by_id": "36994aa2-1dcd-49a9-a2a6-e7e9389f3656",
+      "cost_category": "Commissions",
+      "amount": "621.43",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-27T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "2427.37"
+    }
+  },
+  {
+    "model": "costledgers.costledger",
+    "pk": "049e42c6-b763-4162-8167-3775ef42c2e7",
+    "fields": {
+      "shipment_id": "ba51d19c-9699-447d-b380-ef7c7082343a",
+      "entered_by_id": "4a53b94d-4cf4-48b3-8109-8f5a843c163e",
+      "cost_category": "Export Fees",
+      "amount": "3249.06",
+      "other_category": null,
+      "currency_id": "43e5c61d-1309-4f5d-9155-e6b41f8ec4f2",
+      "created_at": "2026-01-29T10:00:00Z",
+      "exchange_rate_used": null,
+      "converted_amount": "4446.24"
+    }
+  }
+]
