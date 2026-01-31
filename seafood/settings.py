@@ -87,6 +87,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'seafood.wsgi.application'
 
+CORS_ALLOW_ALL_ORIGINS = True # For development only
+CORS_ALLOW_CREDENTIALS = True
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
