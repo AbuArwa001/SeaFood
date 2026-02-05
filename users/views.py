@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -13,7 +14,7 @@ class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     authentication_classes = [JWTAuthentication]
-    permission_classes = [CanCreateUser]
+    permission_classes = [permissions.IsAuthenticated, CanCreateUser]
     
     @action(detail=False, methods=['get'])
     def me(self, request):

@@ -12,31 +12,41 @@ base_date = datetime(2026, 1, 1, 10, 0, 0)
 
 fixtures = []
 
-# 1. Roles (2 items)
-role_admin_id = "02915c14-1092-4733-ae0a-f3067a27b67e"
-role_manager_id = gen_uuid()
+# 1. Roles
+# Define roles map for easy lookup
+role_ids = {
+    "Admin": "02915c14-1092-4733-ae0a-f3067a27b67e",
+    "Mozambique Agent": gen_uuid(),
+    "Logistics Agent": gen_uuid(),
+    "Sales Agent": gen_uuid(),
+    "Finance Agent": gen_uuid(),
+    "Viewer": gen_uuid()
+}
 
-fixtures.extend([
-    {"model": "users.role", "pk": role_admin_id, "fields": {"role_name": "Admin", "permissions": []}},
-    {"model": "users.role", "pk": role_manager_id, "fields": {"role_name": "Manager", "permissions": []}},
-])
+for role_name, role_id in role_ids.items():
+    fixtures.append({
+        "model": "users.role",
+        "pk": role_id,
+        "fields": {"role_name": role_name, "permissions": []}
+    })
 
-# 2. Users (10 items)
-user_ids = []
-user_names = [
-    ("Managing Director", "Headquarters"),
-    ("Operations Manager", "Nairobi"),
-    ("Finance Officer", "Mombasa"),
-    ("Logistics Coordinator", "Nairobi"),
-    ("Sales Manager", "Headquarters"),
-    ("Procurement Officer", "Mombasa"),
-    ("Quality Control", "Nairobi"),
-    ("Warehouse Supervisor", "Mombasa"),
-    ("Accounts Manager", "Headquarters"),
-    ("Export Coordinator", "Nairobi"),
+# 2. Users
+# (Name, Location, Email, Role)
+user_configs = [
+    ("Admin User", "Headquarters", "admin@seafood.com", "Admin"),
+    ("Mozambique Agent", "Maputo", "mozambique@seafood.com", "Mozambique Agent"),
+    ("Logistics Agent", "Nairobi", "logistics@seafood.com", "Logistics Agent"),
+    ("Sales Agent", "Headquarters", "sales@seafood.com", "Sales Agent"),
+    ("Finance Agent", "Headquarters", "finance@seafood.com", "Finance Agent"),
+    ("Viewer Partner", "Remote", "viewer@seafood.com", "Viewer"),
+    ("Operations Manager", "Nairobi", "ops@seafood.com", "Admin"),
+    ("Procurement Officer", "Mombasa", "procurement@seafood.com", "Mozambique Agent"), # Test multiple users in same role
+    ("Warehouse Supervisor", "Mombasa", "warehouse@seafood.com", "Logistics Agent"),
+    ("Accounts Manager", "Headquarters", "accounts@seafood.com", "Finance Agent"),
 ]
 
-for i, (name, location) in enumerate(user_names):
+user_ids = []
+for i, (name, location, email, role_name) in enumerate(user_configs):
     user_id = "2ce1134f-d2a4-4bac-a0f6-bffe82743cea" if i == 0 else gen_uuid()
     user_ids.append(user_id)
     fixtures.append({
@@ -45,13 +55,13 @@ for i, (name, location) in enumerate(user_names):
         "fields": {
             "password": "pbkdf2_sha256$870000$VqZJhN8zKxQ8YqZJhN8zKx$8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8YqZJhN8zKxQ8Y=",
             "last_login": None,
-            "is_superuser": i == 0,
-            "email": f"user{i+1}@seafood.com",
-            "role_id": role_admin_id if i == 0 else role_manager_id,
+            "is_superuser": role_name == "Admin",
+            "email": email,
+            "role_id": role_ids[role_name],
             "full_name": name,
             "location": location,
             "is_active": True,
-            "is_staff": i == 0,
+            "is_staff": role_name == "Admin",
             "created_at": (base_date + timedelta(days=i)).isoformat() + "Z",
             "updated_at": (base_date + timedelta(days=i)).isoformat() + "Z",
             "groups": [],
@@ -240,7 +250,7 @@ for i in range(12):
         "fields": {
             "shipment_id": shipment_ids[i],
             "currency_id": currency_ids["USD"],
-            "entered_by_id": user_ids[i % 10],
+            "entered_by_id": user_ids[i % len(user_ids)],
             "kg_purchased": str(round(random.uniform(100.0, 1000.0), 2)),
             "image_url": "",
             "created_at": (base_date + timedelta(days=i*3, hours=2)).isoformat() + "Z"
@@ -257,7 +267,7 @@ for i in range(12):
         "pk": gen_uuid(),
         "fields": {
             "shipment_id": shipment_ids[i],
-            "entered_by_id": user_ids[i % 10],
+            "entered_by_id": user_ids[i % len(user_ids)],
             "net_received_kg": str(net_kg),
             "transport_loss_kg": str(round(random.uniform(1.0, 10.0), 2)),
             "freezing_loss_kg": str(round(random.uniform(0.5, 5.0), 2)),
@@ -281,7 +291,7 @@ for i in range(12):
         "fields": {
             "shipment_id": shipment_ids[i],
             "currency_id": currency_ids["USD"],
-            "entered_by_id": user_ids[i % 10],
+            "entered_by_id": user_ids[i % len(user_ids)],
             "kg_sold": str(qty),
             "quantity_sold": str(qty),
             "selling_price": str(price),
@@ -300,7 +310,7 @@ for i in range(15):
         "pk": gen_uuid(),
         "fields": {
             "sale_id": sale_ids[sale_idx],
-            "entered_by_id": user_ids[i % 10],
+            "entered_by_id": user_ids[i % len(user_ids)],
             "currency_id": currency_ids["USD"],
             "buyer_name": f"Buyer Company {chr(65+sale_idx)}",
             "amount_paid": str(round(random.uniform(100.0, 10000.0), 2)),
@@ -319,7 +329,7 @@ for i in range(15):
         "pk": gen_uuid(),
         "fields": {
             "shipment_id": shipment_ids[i % 12],
-            "entered_by_id": user_ids[i % 10],
+            "entered_by_id": user_ids[i % len(user_ids)],
             "cost_category": cost_categories[i % len(cost_categories)],
             "amount": str(round(random.uniform(50.0, 5000.0), 2)),
             "other_category": None,
@@ -331,18 +341,18 @@ for i in range(15):
     })
 
 # Write to file
-with open('/home/khalfan/Desktop/SeaFood/data.json', 'w') as f:
+with open('/home/khalifah/Desktop/SeaFood/data.json', 'w') as f:
     json.dump(fixtures, f, indent=2)
 
 print(f"Generated {len(fixtures)} fixture records successfully!")
 print("Breakdown:")
-print(f"  - Roles: 2")
-print(f"  - Users: 10")
-print(f"  - Currencies: 10")
-print(f"  - Exchange Rates: 13")
-print(f"  - Product Categories: 10")
-print(f"  - Units of Measure: 10")
-print(f"  - Products: 15")
+print(f"  - Roles: {len(role_ids)}")
+print(f"  - Users: {len(user_configs)}")
+print(f"  - Currencies: {len(currencies_data)}")
+print(f"  - Exchange Rates: {len(exchange_pairs)}")
+print(f"  - Product Categories: {len(categories)}")
+print(f"  - Units of Measure: {len(units)}")
+print(f"  - Products: {len(products_data)}")
 print(f"  - Shipments: 12")
 print(f"  - Shipment Items: 20")
 print(f"  - Supplier Purchases: 12")
