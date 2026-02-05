@@ -2,28 +2,38 @@
 VIRTUAL_ENV_DIR=".venv"
 
 # Create virtual environment if it doesn't exist
+# Exit immediately if a command exits with a non-zero status
+set -o errexit
+
+VIRTUAL_ENV_DIR=".venv"
+
+# Create virtual environment if it doesn't exist
 if [ ! -d "$VIRTUAL_ENV_DIR" ]; then
     echo "Creating virtual environment..."
     python3 -m venv "$VIRTUAL_ENV_DIR"
 fi
 
 # Activate the virtual environment
-if [ -z "$VIRTUAL_ENV_DIR" ]; then
+if [ -f "$VIRTUAL_ENV_DIR/bin/activate" ]; then
     echo "Activating virtual environment..."
-    source .venv/bin/activate
+    source "$VIRTUAL_ENV_DIR/bin/activate"
 fi
 
-# Install any new dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-python manage.py makemigrations
 # Apply database migrations
+python manage.py makemigrations
 python manage.py migrate --run-syncdb
-# python manage.py migrate
-python manage.py loaddata data.json
-python reset_passwords.py
+
+# Destructive commands disabled for production safety
+# python manage.py loaddata data.json
+# python reset_passwords.py
+
+# Optional setup scripts (uncomment if needed)
 # python manage.py seed_currencies
 # python manage.py sync_rates
 # python manage.py create_admin
+
 # Collect static files
 python manage.py collectstatic --noinput

@@ -76,3 +76,9 @@ class IsOwnerOrAdmin(permissions.BasePermission):
              return obj.entered_by == request.user
         
         return False
+
+class CanCreateUser(IsAdmin):
+    """
+    Alias for IsAdmin for clarity in User creation context.
+    """
+    pass

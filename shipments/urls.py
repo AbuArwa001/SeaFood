@@ -3,7 +3,7 @@ from .views import ShipmentViewSet
 from django.urls import path, include
 
 router = DefaultRouter()
-router.register(r'shipments', ShipmentViewSet)
+router.register(r'shipments', ShipmentViewSet, basename='shipment')
 urlpatterns = [
     path('', include(router.urls)),
 ]

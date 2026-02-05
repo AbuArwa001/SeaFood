@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
 
-from users.permissions import CanCreateUser, IsAdminUser
+from users.permissions import CanCreateUser, IsAdmin
 from .models import User, Role
 from .serializers import UserSerializer, RoleSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -28,3 +28,4 @@ class RoleViewSet(ModelViewSet):
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
     authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated, IsAdmin]
