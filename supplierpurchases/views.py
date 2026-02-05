@@ -1,6 +1,4 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from django.contrib.auth.models import User
+from rest_framework import permissions, viewsets
 from supplierpurchases.models import SupplierPurchase
 from .serializers import SupplierPurchaseSerializer
 
@@ -9,7 +7,7 @@ from users.permissions import IsMozambiqueAgent, IsOwnerOrAdmin
 
 class SupplierPurchaseViewSet(viewsets.ModelViewSet):
     serializer_class = SupplierPurchaseSerializer
-    permission_classes = [IsMozambiqueAgent, IsOwnerOrAdmin]
+    permission_classes = [permissions.IsAuthenticated, IsMozambiqueAgent, IsOwnerOrAdmin]
 
     def get_queryset(self):
         user = self.request.user

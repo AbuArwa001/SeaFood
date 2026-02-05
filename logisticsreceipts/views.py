@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 from .models import LogisticsReceipt
 from .serializers import LogisticsReceiptSerializer
 
@@ -7,7 +6,7 @@ from users.permissions import IsLogisticsAgent, IsOwnerOrAdmin
 
 class LogisticsReceiptViewSet(viewsets.ModelViewSet):
     serializer_class = LogisticsReceiptSerializer
-    permission_classes = [IsLogisticsAgent, IsOwnerOrAdmin]
+    permission_classes = [permissions.IsAuthenticated, IsLogisticsAgent, IsOwnerOrAdmin]
 
     def get_queryset(self):
         user = self.request.user

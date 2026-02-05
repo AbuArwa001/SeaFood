@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 from .models import Payment
 from .serializers import PaymentSerializer
 
@@ -10,7 +10,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
     A viewset for viewing and editing payment instances.
     """
     serializer_class = PaymentSerializer
-    permission_classes = [IsFinanceAgent, IsOwnerOrAdmin]
+    permission_classes = [permissions.IsAuthenticated, IsFinanceAgent, IsOwnerOrAdmin]
 
     def get_queryset(self):
         user = self.request.user

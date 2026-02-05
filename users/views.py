@@ -14,7 +14,11 @@ class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     authentication_classes = [JWTAuthentication]
-    permission_classes = [permissions.IsAuthenticated, CanCreateUser]
+    
+    def get_permissions(self):
+        if self.action == 'me':
+            return [permissions.IsAuthenticated()]
+        return [permissions.IsAuthenticated(), CanCreateUser()]
     
     @action(detail=False, methods=['get'])
     def me(self, request):

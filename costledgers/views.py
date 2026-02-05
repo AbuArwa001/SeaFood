@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .models import CostLedger
 from .serializers import CostLedgerSerializer
 
@@ -21,7 +21,7 @@ class CostLedgerViewSet(viewsets.ModelViewSet):
     # Use IsOwnerOrAdmin is good. But we want to block Mozambique/Sales completely.
     # Create a local permission or use the ones I made.
     
-    permission_classes = [IsOwnerOrAdmin] 
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOrAdmin] 
 
     def get_queryset(self):
         user = self.request.user
