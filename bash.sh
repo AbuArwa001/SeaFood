@@ -29,7 +29,7 @@ python manage.py migrate --run-syncdb
 # Destructive commands disabled for production safety
 python manage.py loaddata data.json
 # python reset_passwords.py
-# python manage.py seed_users
+python manage.py seed_users
 
 # Optional setup scripts (uncomment if needed)
 # python manage.py seed_currencies
