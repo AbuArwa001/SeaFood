@@ -1,22 +1,32 @@
 from rest_framework import serializers
-from django.contrib.auth.models import AnonymousUser
+from django.contrib.auth.models import AnonymousUser, Permission
 from .models import User, Role
 
+class PermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permission
+        fields = ['id', 'name', 'codename']
+
+class RoleSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(read_only=True)
+    permissions = PermissionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Role
+        fields = [
+            'id',
+            'role_name',
+            'permissions',
+        ]
 
 class UserSerializer(serializers.ModelSerializer):
-    """
-    Docstring for UserSerializer
-        id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    email = models.EmailField(unique=True)
-    role = models.ForeignKey(
-        Role,
-        on_delete=models.PROTECT,
-        related_name="users"
-    )
-    full_name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    """
     id = serializers.UUIDField(read_only=True)
+    # Use nested serializer for read operations to provide permissions
+    role = RoleSerializer(read_only=True)
+    # Add a write-only field for role assignment during creation/update
+    role_id = serializers.PrimaryKeyRelatedField(
+        queryset=Role.objects.all(), source='role', write_only=True
+    )
     role_name = serializers.CharField(source='role.role_name', read_only=True)
     
     class Meta:
@@ -25,6 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
             'id',
             'email',
             'role',
+            'role_id',
             'role_name',
             'full_name',
             'location',
