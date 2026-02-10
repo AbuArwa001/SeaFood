@@ -11,48 +11,60 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # 1. Configuration
         API_KEY = "9808e08a988476b896211098"
-        BASE_CURR_CODE = "KES"
-        url = f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/{BASE_CURR_CODE}"
+        # We'll use USD as the primary pivot currency to get global rates
+        PRIMARY_BASE = "USD"
+        rate_date = timezone.now().date()
+        
+        active_currencies = Currency.objects.filter(is_active=True)
+        if not active_currencies.exists():
+            self.stdout.write(self.style.WARNING("No active currencies found in database."))
+            return
 
-        try:
-            # 2. Fetch Data
-            response = requests.get(url, timeout=15)
-            response.raise_for_status()
-            data = response.json()
+        # 2. Identify if we want to sync starting from multiple bases or just USD
+        # For small sets, fetching USD and calculating cross-rates is efficient.
+        # However, to keep it simple and direct for the user, we'll fetch rates based on what's active.
+        
+        bases_to_fetch = [PRIMARY_BASE]
+        # If USD isn't in our DB, use the first active currency as backup
+        if not active_currencies.filter(code=PRIMARY_BASE).exists():
+            bases_to_fetch = [active_currencies.first().code]
+
+        total_count = 0
+        for base_code in bases_to_fetch:
+            self.stdout.write(f"Fetching rates with base: {base_code}...")
+            url = f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/{base_code}"
             
-            rates = data.get("conversion_rates", {})
-            rate_date = timezone.now().date()
-
-            # 3. Get Base Currency Instance
             try:
-                base_currency = Currency.objects.get(code=BASE_CURR_CODE)
-            except Currency.DoesNotExist:
-                self.stderr.write(self.style.ERROR(f"Base currency {BASE_CURR_CODE} not found in DB!"))
-                return
+                response = requests.get(url, timeout=15)
+                response.raise_for_status()
+                data = response.json()
+                
+                if data.get("result") != "success":
+                    self.stderr.write(self.style.ERROR(f"API Error for {base_code}: {data.get('error-type')}"))
+                    continue
 
-            # 4. Save to Database (using a transaction for safety)
-            count = 0
-            with transaction.atomic():
-                for code, rate_value in rates.items():
-                    # Skip if it's the same currency (handled by your model.clean())
-                    if code == BASE_CURR_CODE:
-                        continue
-                    
-                    # Only save if the target currency exists in our system
-                    target_currency = Currency.objects.filter(code=code).first()
-                    
-                    if target_currency:
-                        # update_or_create handles the unique_together constraint
-                        obj, created = ExchangeRate.objects.update_or_create(
-                            from_currency=base_currency,
-                            to_currency=target_currency,
-                            rate_date=rate_date,
-                            defaults={'rate': rate_value}
-                        )
-                        if created:
-                            count += 1
+                conversion_rates = data.get("conversion_rates", {})
+                base_currency = Currency.objects.get(code=base_code)
 
-            self.stdout.write(self.style.SUCCESS(f"Successfully saved {count} new rates for {rate_date}"))
+                with transaction.atomic():
+                    for target_code, rate_value in conversion_rates.items():
+                        if target_code == base_code:
+                            continue
+                        
+                        target_currency = active_currencies.filter(code=target_code).first()
+                        if target_currency:
+                            obj, created = ExchangeRate.objects.update_or_create(
+                                from_currency=base_currency,
+                                to_currency=target_currency,
+                                rate_date=rate_date,
+                                defaults={'rate': rate_value}
+                            )
+                            if created:
+                                total_count += 1
+                
+                self.stdout.write(self.style.SUCCESS(f"Finished syncing for {base_code}"))
 
-        except Exception as e:
-            self.stderr.write(self.style.ERROR(f"Failed to sync rates: {str(e)}"))
+            except Exception as e:
+                self.stderr.write(self.style.ERROR(f"Failed to sync for {base_code}: {str(e)}"))
+
+        self.stdout.write(self.style.SUCCESS(f"Global sync complete. {total_count} new rate(s) saved for {rate_date}"))
