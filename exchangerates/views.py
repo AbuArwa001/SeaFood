@@ -6,7 +6,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from exchangerates.filters import ExchangeRateFilter
 
 class ExchangeRateViewSet(viewsets.ModelViewSet):
-    queryset = ExchangeRate.objects.order_by('rate_date')
+    queryset = ExchangeRate.objects.order_by('-rate_date')
     serializer_class = ExchangeRateSerializer
     filter_backends= [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ExchangeRateFilter
