@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'whitenoise.runserver_nostatic',
+    'django_crontab',
     # Custom Apps
     'users',
     'shipments',
@@ -167,3 +168,8 @@ ADMIN_ROLES = os.getenv("ADMIN_ROLES", "Admin")
 ROLE_CAPABILITIES = json.loads(
     os.getenv("ROLE_CAPABILITIES_JSON", "{}")
 )
+# CRON JOBS
+# Run sync_rates every hour
+CRONJOBS = [
+    ('0 * * * *', 'django.core.management.call_command', ['sync_rates']),
+]

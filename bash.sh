@@ -30,10 +30,11 @@ python manage.py migrate --run-syncdb
 python manage.py loaddata data.json
 # python reset_passwords.py
 python manage.py seed_users
+# python3 manage.py sync_rates
 
 # Optional setup scripts (uncomment if needed)
-# python manage.py seed_currencies
-# python manage.py sync_rates
+python manage.py seed_currencies
+python manage.py sync_rates
 # python manage.py create_admin
 
 # Collect static files
