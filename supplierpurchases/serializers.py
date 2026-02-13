@@ -1,16 +1,7 @@
 from rest_framework import serializers
 from shipments.models import Shipment
 from .models import SupplierPurchase
-
-class ShipmentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Shipment
-        fields = [
-            'id',
-            'product',
-            'origin',
-            'arrival_date',
-        ]
+from shipments.serializers import ShipmentSerializer
 
 class SupplierPurchaseSerializer(serializers.ModelSerializer):
     """
@@ -31,7 +22,8 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
 
     """
     id = serializers.UUIDField(read_only=True)
-    shipment = Shipment
+    shipment = serializers.PrimaryKeyRelatedField(queryset=Shipment.objects.all())
+    shipment_details = ShipmentSerializer(source='shipment', read_only=True)
     entered_by = serializers.PrimaryKeyRelatedField(queryset=SupplierPurchase.objects.all())
     kg_purchased = serializers.DecimalField(max_digits=10, decimal_places=2)
     image_url = serializers.CharField(allow_blank=True, allow_null=True, required=False)
@@ -41,6 +33,7 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'shipment',
+            'shipment_details',
             'entered_by',
             'kg_purchased',
             'image_url',

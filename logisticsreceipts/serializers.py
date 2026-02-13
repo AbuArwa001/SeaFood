@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import LogisticsReceipt
+from shipments.serializers import ShipmentSerializer
 
 class LogisticsReceiptSerializer(serializers.ModelSerializer):
     """
@@ -22,11 +23,13 @@ class LogisticsReceiptSerializer(serializers.ModelSerializer):
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     """
+    shipment_details = ShipmentSerializer(source='shipment', read_only=True)
     class Meta:
         model = LogisticsReceipt
         fields = [
             'id',
             'shipment',
+            'shipment_details',
             'entered_by',
             'net_received_kg',
             'transport_loss_kg',

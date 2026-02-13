@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Payment
+from sales.serializers import SaleSerializer
 
 class PaymentSerializer(serializers.ModelSerializer):
     """
@@ -26,11 +27,13 @@ class PaymentSerializer(serializers.ModelSerializer):
     actual_payment_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     """
+    sale_details = SaleSerializer(source='sale', read_only=True)
     class Meta:
         model = Payment
         fields = (
             'id',
             'sale',
+            'sale_details',
             'entered_by',
             'currency',
             'buyer_name',
