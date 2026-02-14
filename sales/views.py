@@ -13,3 +13,6 @@ class SaleViewSet(viewsets.ModelViewSet):
         if user.role.role_name == "Admin":
             return Sale.objects.all()
         return Sale.objects.filter(entered_by=user)
+
+    def perform_create(self, serializer):
+        serializer.save(entered_by=self.request.user)

@@ -1,5 +1,6 @@
 from decimal import Decimal
 from django.db import models
+from django.utils import timezone
 from currencies.models import Currency
 from exchangerates.models import ExchangeRate
 from shipments.models import Shipment

@@ -2,10 +2,15 @@ from rest_framework import serializers
 from .models import Sale
 from users.serializers import UserSerializer
 from shipments.serializers import ShipmentSerializer
+from shipments.models import Shipment
 
 class SaleSerializer(serializers.ModelSerializer):
     entered_by = UserSerializer(read_only=True)
-    shipment = ShipmentSerializer(read_only=True)
+    shipment = serializers.PrimaryKeyRelatedField(queryset=Shipment.objects.all())
+    
+    # Calculated fields should be read-only
+    total_sale_amount = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True)
+    converted_amount = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True)
 
     class Meta:
         model = Sale
@@ -13,6 +18,7 @@ class SaleSerializer(serializers.ModelSerializer):
             'id',
             'shipment',
             'entered_by',
+            'currency',
             'kg_sold',
             'quantity_sold',
             'selling_price',
