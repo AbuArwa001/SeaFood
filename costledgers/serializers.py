@@ -30,6 +30,8 @@ class CostLedger(models.Model):
     # shipment = ShipmentSerializer(read_only=True)
     entered_by = UserSerializer(read_only=True)
     id = serializers.UUIDField(read_only=True)
+    converted_amount = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True)
+    exchange_rate_used = serializers.DecimalField(max_digits=12, decimal_places=6, read_only=True)
 
     class Meta:
         model = CostLedger

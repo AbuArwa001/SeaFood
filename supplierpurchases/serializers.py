@@ -24,7 +24,7 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
     shipment = serializers.PrimaryKeyRelatedField(queryset=Shipment.objects.all())
     shipment_details = ShipmentSerializer(source='shipment', read_only=True)
-    entered_by = serializers.PrimaryKeyRelatedField(queryset=SupplierPurchase.objects.all())
+    entered_by = serializers.PrimaryKeyRelatedField(read_only=True)
     kg_purchased = serializers.DecimalField(max_digits=10, decimal_places=2)
     image_url = serializers.CharField(allow_blank=True, allow_null=True, required=False)
     created_at = serializers.DateTimeField(read_only=True)

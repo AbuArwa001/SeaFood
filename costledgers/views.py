@@ -35,3 +35,6 @@ class CostLedgerViewSet(viewsets.ModelViewSet):
         
         # Logistics and Finance see only their own entries
         return CostLedger.objects.filter(entered_by=user)
+
+    def perform_create(self, serializer):
+        serializer.save(entered_by=self.request.user)

@@ -13,3 +13,6 @@ class LogisticsReceiptViewSet(viewsets.ModelViewSet):
         if user.role.role_name == "Admin":
             return LogisticsReceipt.objects.all()
         return LogisticsReceipt.objects.filter(entered_by=user)
+
+    def perform_create(self, serializer):
+        serializer.save(entered_by=self.request.user)

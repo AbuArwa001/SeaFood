@@ -14,3 +14,6 @@ class SupplierPurchaseViewSet(viewsets.ModelViewSet):
         if user.role.role_name == "Admin":
             return SupplierPurchase.objects.all()
         return SupplierPurchase.objects.filter(entered_by=user)
+
+    def perform_create(self, serializer):
+        serializer.save(entered_by=self.request.user)

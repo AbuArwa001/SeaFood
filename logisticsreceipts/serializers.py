@@ -24,6 +24,8 @@ class LogisticsReceiptSerializer(serializers.ModelSerializer):
     created_at = models.DateTimeField(auto_now_add=True)
     """
     shipment_details = ShipmentSerializer(source='shipment', read_only=True)
+    entered_by = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = LogisticsReceipt
         fields = [

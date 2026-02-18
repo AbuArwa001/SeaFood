@@ -18,3 +18,6 @@ class PaymentViewSet(viewsets.ModelViewSet):
             return Payment.objects.all()
         return Payment.objects.filter(entered_by=user)
 
+    def perform_create(self, serializer):
+        serializer.save(entered_by=self.request.user)
+

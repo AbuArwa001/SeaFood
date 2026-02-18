@@ -28,6 +28,8 @@ class PaymentSerializer(serializers.ModelSerializer):
     created_at = models.DateTimeField(auto_now_add=True)
     """
     sale_details = SaleSerializer(source='sale', read_only=True)
+    entered_by = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Payment
         fields = (
