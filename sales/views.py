@@ -4,6 +4,8 @@ from .serializers import SaleSerializer
 
 from users.permissions import IsSalesAgent, IsOwnerOrAdmin
 
+from rest_framework.exceptions import ValidationError
+
 class SaleViewSet(viewsets.ModelViewSet):
     serializer_class = SaleSerializer
     permission_classes = [permissions.IsAuthenticated, IsSalesAgent, IsOwnerOrAdmin]
@@ -15,4 +17,7 @@ class SaleViewSet(viewsets.ModelViewSet):
         return Sale.objects.filter(entered_by=user)
 
     def perform_create(self, serializer):
-        serializer.save(entered_by=self.request.user)
+        try:
+            serializer.save(entered_by=self.request.user)
+        except ValueError as e:
+            raise ValidationError(str(e))

@@ -52,18 +52,30 @@ class Sale(models.Model):
         shipment_currency = self.shipment.currency
 
         if self.currency != shipment_currency:
-            # 2. Look up the rate
+            # 2. Look up the rate (Direct)
             rate_obj = ExchangeRate.objects.filter(
                 from_currency=self.currency,
                 to_currency=shipment_currency,
                 rate_date__lte=reference_date
-            ).first() # ordering is handled by Meta on ExchangeRate
+            ).first() 
 
-            if not rate_obj:
-                raise ValueError(f"No exchange rate found for {self.currency} to {shipment_currency} on {reference_date}")
+            if rate_obj:
+                self.exchange_rate_used = rate_obj.rate
+            else:
+                # 3. Look up the rate (Inverse)
+                inverse_rate_obj = ExchangeRate.objects.filter(
+                    from_currency=shipment_currency,
+                    to_currency=self.currency,
+                    rate_date__lte=reference_date
+                ).first()
 
-            self.exchange_rate_used = rate_obj.rate
-            # 3. Calculate based on your actual field names (quantity * price)
+                if not inverse_rate_obj:
+                    raise ValueError(f"No exchange rate found for {self.currency} to {shipment_currency} (or inverse) on {reference_date}")
+                
+                # Inverse rate: if 1 USD = 2500 TZS, then 1 TZS = 1/2500 USD
+                self.exchange_rate_used = Decimal("1.0") / inverse_rate_obj.rate
+
+            # 4. Calculate based on your actual field names (quantity * price)
             self.total_sale_amount = self.quantity_sold * self.selling_price
             self.converted_amount = self.total_sale_amount * self.exchange_rate_used
         else:
