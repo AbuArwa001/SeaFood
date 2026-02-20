@@ -10,3 +10,5 @@ class CurrencyViewSet(viewsets.ModelViewSet):
     """
     serializer_class = CurrencySerializer
     queryset = Currency.objects.all()
+    ordering_fields = ['code', 'name', 'symbol']
+    ordering = ['code']
