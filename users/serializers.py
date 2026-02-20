@@ -28,17 +28,20 @@ class UserSerializer(serializers.ModelSerializer):
         queryset=Role.objects.all(), source='role', write_only=True
     )
     role_name = serializers.CharField(source='role.role_name', read_only=True)
+    password = serializers.CharField(write_only=True, required=False, allow_blank=True)
     
     class Meta:
         model = User
         fields = [
             'id',
             'email',
+            'password',
             'role',
             'role_id',
             'role_name',
             'full_name',
             'location',
+            'is_active',
         ]
 
     def validate_role(self, value):
@@ -59,6 +62,28 @@ class UserSerializer(serializers.ModelSerializer):
         
         # Otherwise it's fine (anyone can assign "User" role)
         return value
+
+    def create(self, validated_data):
+        """
+        Use create_user to ensure password hashing.
+        """
+        password = validated_data.pop('password', None)
+        user = User.objects.create_user(password=password, **validated_data)
+        return user
+
+    def update(self, instance, validated_data):
+        """
+        Handle password update if provided.
+        """
+        password = validated_data.pop('password', None)
+        if password:
+            instance.set_password(password)
+        
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        
+        instance.save()
+        return instance
 
 class RoleSerializer(serializers.ModelSerializer):
     """
