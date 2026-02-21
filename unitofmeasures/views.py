@@ -9,3 +9,4 @@ class UnitOfMeasureViewSet(viewsets.ModelViewSet):
     """
     serializer_class = UnitOfMeasureSerializer
     queryset = UnitOfMeasure.objects.all()
+    pagination_class = None

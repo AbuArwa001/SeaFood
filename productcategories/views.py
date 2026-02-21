@@ -8,3 +8,4 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
     """
     serializer_class = ProductCategorySerializer
     queryset = ProductCategory.objects.all()
+    pagination_class = None
