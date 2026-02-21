@@ -35,6 +35,8 @@ class ShipmentSerializer(serializers.ModelSerializer):
             'currency_code',
             'country_origin',
             'status',
+            'estimated_transit_days',
+            'actual_arrival_date',
             'created_at',
             'items',
         ]
