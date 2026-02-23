@@ -20,6 +20,7 @@ api_v1_patterns = [
     path('', include('productcategories.urls')),
     path('', include('unitofmeasures.urls')),
     path('', include('products.urls')),
+    path('', include('notifications.urls')),
 ]
 
 urlpatterns = [
