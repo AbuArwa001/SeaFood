@@ -26,6 +26,7 @@ class ShipmentItemSerializer(serializers.ModelSerializer):
 class ShipmentSerializer(serializers.ModelSerializer):
     items = ShipmentItemSerializer(many=True)
     currency_code = serializers.ReadOnlyField(source='currency.code')
+    currency_symbol = serializers.ReadOnlyField(source='currency.symbol')
 
     class Meta:
         model = Shipment
@@ -33,6 +34,7 @@ class ShipmentSerializer(serializers.ModelSerializer):
             'id',
             'currency',
             'currency_code',
+            'currency_symbol',
             'country_origin',
             'status',
             'estimated_transit_days',
