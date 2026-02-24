@@ -54,7 +54,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
                     data={
                         "company_name": company_name,
                         "user": {
-                            "name": instance.entered_by.get_full_name() or instance.entered_by.username,
+                            "name": instance.entered_by.full_name or instance.entered_by.username,
                         },
                         "amount_payed": amount_payed,
                         "amount_due": amount_due,

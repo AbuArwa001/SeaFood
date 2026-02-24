@@ -27,7 +27,7 @@ class Command(BaseCommand):
                 company_name = payment.sale.shipment.country_origin if payment.sale and payment.sale.shipment else "N/A"
                 amount_payed = str(payment.amount_paid)
                 amount_due = str(payment.sale.total_sale_amount) if payment.sale else "N/A"
-                user_name = user.get_full_name() or user.username
+                user_name = user.full_name or user.username
 
                 # Always send to the email recipient (inline Knock recipient)
                 email_recipient = {
