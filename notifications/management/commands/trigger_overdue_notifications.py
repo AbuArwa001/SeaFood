@@ -16,17 +16,35 @@ class Command(BaseCommand):
         overdue_payments = Payment.objects.filter(
             expected_payment_date__lt=today,
             actual_payment_date__isnull=True
-        ).select_related("entered_by")
+        ).select_related("entered_by", "sale", "sale__shipment")
 
         payment_count = 0
         for payment in overdue_payments:
             days_overdue = (today - payment.expected_payment_date).days
             user = payment.entered_by
             if user:
+                actor_id = str(user.id)
+                company_name = payment.sale.shipment.country_origin if payment.sale and payment.sale.shipment else "N/A"
+                amount_payed = str(payment.amount_paid)
+                amount_due = str(payment.sale.total_sale_amount) if payment.sale else "N/A"
+                user_name = user.get_full_name() or user.username
+
+                # Always send to the email recipient (inline Knock recipient)
+                email_recipient = {
+                    "id": "khalfanathman12@gmail.com",
+                    "email": "khalfanathman12@gmail.com",
+                    "name": "Khalfan",
+                }
+
                 trigger_notification(
-                    workflow_key="payment_overdue",
-                    recipients=[str(user.id)],
+                    workflow_key="payment-overdue",
+                    recipients=[actor_id, email_recipient],
+                    actor=actor_id,
                     data={
+                        "company_name": company_name,
+                        "user": {"name": user_name},
+                        "amount_payed": amount_payed,
+                        "amount_due": amount_due,
                         "buyer_name": payment.buyer_name,
                         "days_overdue": days_overdue,
                         "payment_id": str(payment.id),

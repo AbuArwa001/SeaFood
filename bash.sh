@@ -39,3 +39,4 @@ python manage.py sync_rates
 
 # Collect static files
 python manage.py collectstatic --noinput
+python manage.py trigger_overdue_notifications
