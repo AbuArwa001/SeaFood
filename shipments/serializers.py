@@ -5,6 +5,9 @@ from products.serializers import ProductSerializer
 
 from django.db import transaction
 
+# Knock trigger
+from notifications.knock_client import trigger_notification
+from users.models import User
 class ShipmentItemSerializer(serializers.ModelSerializer):
     # This allows you to see the product details when reading, 
     # but only requires the product ID when writing.
@@ -53,6 +56,22 @@ class ShipmentSerializer(serializers.ModelSerializer):
             
             for item_data in items_data:
                 ShipmentItem.objects.create(shipment=shipment, **item_data)
+        
+        try:
+            # Trigger Knock notification to Admins for newly created shipment
+            admins = list(User.objects.filter(role__role_name="Admin").values_list('id', flat=True))
+            recipients = [str(aid) for aid in admins]
+            short_id = str(shipment.id)[:8].upper()
+            trigger_notification(
+                workflow_key="shipment_created",
+                recipients=recipients,
+                data={
+                    "shipment_id": short_id,
+                    "country_origin": shipment.country_origin,
+                }
+            )
+        except Exception as e:
+            print(f"Failed to trigger Knock shipment_created: {e}")
         
         return shipment
 
