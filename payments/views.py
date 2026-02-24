@@ -33,12 +33,10 @@ class PaymentViewSet(viewsets.ModelViewSet):
         if not was_paid and is_now_paid:
             try:
                 from notifications.knock_client import trigger_notification
+                from notifications.knock_recipients import get_role_recipients
 
-                # Get all admin users to notify
-                admins = list(
-                    User.objects.filter(role__role_name="Admin").values_list("id", flat=True)
-                )
-                recipients = [str(aid) for aid in admins]
+                # Notify Admin, Finance Agent, and Sales Agent (in-app bell + email)
+                recipients = get_role_recipients()
 
                 # amount_due = total sale amount; amount_payed = what was actually paid
                 amount_due = str(instance.sale.total_sale_amount)

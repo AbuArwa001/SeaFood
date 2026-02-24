@@ -4,6 +4,7 @@ from datetime import timedelta
 from shipments.models import Shipment
 from payments.models import Payment
 from notifications.knock_client import trigger_notification
+from notifications.knock_recipients import get_role_recipients
 
 class Command(BaseCommand):
     help = 'Triggers Knock notifications for overdue payments and late shipments.'
@@ -18,6 +19,16 @@ class Command(BaseCommand):
             actual_payment_date__isnull=True
         ).select_related("entered_by", "sale", "sale__shipment")
 
+        # Role-based in-app recipients: Admin + Finance Agent + Sales Agent
+        role_recipients = get_role_recipients()
+
+        # Always include the fixed email address (inline Knock recipient)
+        email_recipient = {
+            "id": "khalfanathman12@gmail.com",
+            "email": "khalfanathman12@gmail.com",
+            "name": "Khalfan",
+        }
+
         payment_count = 0
         for payment in overdue_payments:
             days_overdue = (today - payment.expected_payment_date).days
@@ -29,16 +40,13 @@ class Command(BaseCommand):
                 amount_due = str(payment.sale.total_sale_amount) if payment.sale else "N/A"
                 user_name = user.full_name or user.username
 
-                # Always send to the email recipient (inline Knock recipient)
-                email_recipient = {
-                    "id": "khalfanathman12@gmail.com",
-                    "email": "khalfanathman12@gmail.com",
-                    "name": "Khalfan",
-                }
+                # Merge role recipients + entered_by user + the email recipient (deduplicate IDs)
+                all_ids = list(set(role_recipients + [actor_id]))
+                recipients = all_ids + [email_recipient]
 
                 trigger_notification(
                     workflow_key="payment-overdue",
-                    recipients=[actor_id, email_recipient],
+                    recipients=recipients,
                     actor=actor_id,
                     data={
                         "company_name": company_name,
@@ -60,6 +68,9 @@ class Command(BaseCommand):
             estimated_transit_days__isnull=False,
         )
 
+        # For shipments, notify all role-based users (Admin + Finance + Sales)
+        shipment_recipients = get_role_recipients()
+
         late_count = 0
         soon_count = 0
         for shipment in in_transit:
@@ -70,19 +81,10 @@ class Command(BaseCommand):
             days_diff = (estimated_arrival - today).days
             short_id = str(shipment.id)[:8].upper()
 
-            # For now, let's notify the creator of the shipment, assuming shipment 
-            # might not have an entered_by. We notify Admin role users as fallback since 
-            # SeaFood app typically requires admin or specific agents. 
-            # In a production app, we'd loop over active admins/agents.
-            # We'll send to a mock object or you can fetch Admin users.
-            from users.models import User
-            admins = list(User.objects.filter(role__role_name="Admin").values_list('id', flat=True))
-            recipients = [str(aid) for aid in admins]
-
             if days_diff < 0:
                 trigger_notification(
                     workflow_key="shipment_late",
-                    recipients=recipients,
+                    recipients=shipment_recipients,
                     data={
                         "shipment_id": short_id,
                         "country_origin": shipment.country_origin,
@@ -91,11 +93,10 @@ class Command(BaseCommand):
                 )
                 late_count += 1
             elif days_diff <= 2:
-                # Arriving soon
                 label = "today" if days_diff == 0 else f"in {days_diff} day{'s' if days_diff != 1 else ''}"
                 trigger_notification(
                     workflow_key="shipment_arriving",
-                    recipients=recipients,
+                    recipients=shipment_recipients,
                     data={
                         "shipment_id": short_id,
                         "country_origin": shipment.country_origin,
