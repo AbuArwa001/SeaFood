@@ -7,4 +7,4 @@ from .models import Shipment
 class ShipmentViewSet(viewsets.ModelViewSet):
     queryset = Shipment.objects.all()
     serializer_class = ShipmentSerializer
-    search_fields = ['shipment_number', 'origin', 'destination', 'vessel_name']
+    search_fields = ['id', 'country_origin', 'status']

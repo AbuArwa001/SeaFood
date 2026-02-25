@@ -11,7 +11,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
     """
     serializer_class = PaymentSerializer
     permission_classes = [permissions.IsAuthenticated, IsFinanceAgent, IsOwnerOrAdmin]
-    search_fields = ['transaction_id', 'payment_method', 'buyer_name']
+    search_fields = ['id', 'buyer_name']
 
     def get_queryset(self):
         user = self.request.user

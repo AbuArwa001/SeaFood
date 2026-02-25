@@ -22,7 +22,7 @@ class CostLedgerViewSet(viewsets.ModelViewSet):
     # Create a local permission or use the ones I made.
     
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrAdmin] 
-    search_fields = ['description', 'cost_type']
+    search_fields = ['cost_category', 'other_category']
 
     def get_queryset(self):
         user = self.request.user
