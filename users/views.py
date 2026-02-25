@@ -16,6 +16,7 @@ class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     authentication_classes = [JWTAuthentication]
+    search_fields = ['email', 'full_name', 'location']
     
     def get_permissions(self):
         if self.action == 'me':

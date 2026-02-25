@@ -9,6 +9,7 @@ from rest_framework.exceptions import ValidationError
 class SaleViewSet(viewsets.ModelViewSet):
     serializer_class = SaleSerializer
     permission_classes = [permissions.IsAuthenticated, IsSalesAgent, IsOwnerOrAdmin]
+    search_fields = ['sale_number', 'customer_name', 'product__name']
 
     def get_queryset(self):
         user = self.request.user

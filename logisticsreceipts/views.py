@@ -7,6 +7,7 @@ from users.permissions import IsLogisticsAgent, IsOwnerOrAdmin
 class LogisticsReceiptViewSet(viewsets.ModelViewSet):
     serializer_class = LogisticsReceiptSerializer
     permission_classes = [permissions.IsAuthenticated, IsLogisticsAgent, IsOwnerOrAdmin]
+    search_fields = ['receipt_number', 'consignee_name']
 
     def get_queryset(self):
         user = self.request.user

@@ -8,6 +8,7 @@ from users.permissions import IsMozambiqueAgent, IsOwnerOrAdmin
 class SupplierPurchaseViewSet(viewsets.ModelViewSet):
     serializer_class = SupplierPurchaseSerializer
     permission_classes = [permissions.IsAuthenticated, IsMozambiqueAgent, IsOwnerOrAdmin]
+    search_fields = ['id', 'shipment__shipment_number']
 
     def get_queryset(self):
         user = self.request.user
