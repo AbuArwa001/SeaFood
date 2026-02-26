@@ -80,17 +80,14 @@ class CostLedger(models.Model):
         shipment_currency = self.shipment.currency
 
         if self.currency != shipment_currency:
-            rate = ExchangeRate.objects.filter(
-                from_currency=self.currency,
-                to_currency=shipment_currency,
-                rate_date__lte=self.created_at.date()
-            ).order_by("-rate_date").first()
+            reference_date = self.created_at.date() if self.created_at else timezone.now().date()
+            effective_rate = ExchangeRate.get_effective_rate(self.currency, shipment_currency, reference_date)
 
-            if not rate:
-                raise ValueError("Missing exchange rate")
+            if effective_rate is None:
+                raise ValueError(f"Missing exchange rate for {self.currency} to {shipment_currency}")
 
-            self.exchange_rate_used = rate.rate
-            self.converted_amount = self.amount * rate.rate
+            self.exchange_rate_used = effective_rate
+            self.converted_amount = self.amount * effective_rate
         else:
             self.converted_amount = self.amount
 

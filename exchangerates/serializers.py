@@ -9,7 +9,26 @@ class CurrencySerializer(serializers.ModelSerializer):
             'id',
             'code',
             'name',
-            'symbol',
+        ]
+
+from .models import CurrencyMargin
+
+class CurrencyMarginSerializer(serializers.ModelSerializer):
+    from_currency_detail = CurrencySerializer(source='from_currency', read_only=True)
+    to_currency_detail = CurrencySerializer(source='to_currency', read_only=True)
+
+    class Meta:
+        model = CurrencyMargin
+        fields = [
+            'id',
+            'from_currency',
+            'to_currency',
+            'from_currency_detail',
+            'to_currency_detail',
+            'margin_percentage',
+            'is_active',
+            'created_at',
+            'updated_at',
         ]
 
 class ExchangeRateSerializer(serializers.ModelSerializer):

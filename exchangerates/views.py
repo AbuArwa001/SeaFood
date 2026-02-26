@@ -14,3 +14,13 @@ class ExchangeRateViewSet(viewsets.ModelViewSet):
     # search_fields = ['from_currency__code', 'to_currency__code']
     # ordering_fields = ['rate_date', 'rate']
     # ordering = ['-rate_date']
+
+from .models import CurrencyMargin
+from .serializers import CurrencyMarginSerializer
+
+class CurrencyMarginViewSet(viewsets.ModelViewSet):
+    queryset = CurrencyMargin.objects.all()
+    serializer_class = CurrencyMarginSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['from_currency', 'to_currency', 'is_active']
+    search_fields = ['from_currency__code', 'to_currency__code']
