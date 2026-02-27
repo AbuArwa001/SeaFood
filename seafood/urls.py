@@ -22,6 +22,7 @@ api_v1_patterns = [
     path('', include('products.urls')),
     path('', include('notifications.urls')),
     path('audit/', include('audit.urls')),
+    path('', include('configuration.urls')),
 ]
 
 urlpatterns = [
