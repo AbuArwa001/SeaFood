@@ -17,6 +17,8 @@ class RoleSerializer(serializers.ModelSerializer):
             'id',
             'role_name',
             'permissions',
+            'created_at',
+            'updated_at',
         ]
 
 class UserSerializer(serializers.ModelSerializer):
