@@ -10,6 +10,13 @@ class PermissionSerializer(serializers.ModelSerializer):
 class RoleSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
     permissions = PermissionSerializer(many=True, read_only=True)
+    permission_ids = serializers.PrimaryKeyRelatedField(
+        many=True, 
+        queryset=Permission.objects.all(), 
+        source='permissions', 
+        write_only=True,
+        required=False
+    )
 
     class Meta:
         model = Role
@@ -17,6 +24,7 @@ class RoleSerializer(serializers.ModelSerializer):
             'id',
             'role_name',
             'permissions',
+            'permission_ids',
             'created_at',
             'updated_at',
         ]

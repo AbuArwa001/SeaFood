@@ -6,11 +6,18 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from users.permissions import CanCreateUser, IsAdmin
-from .models import User, Role
-from .serializers import UserSerializer, RoleSerializer
+from .models import User, Role, Permission
+from .serializers import UserSerializer, RoleSerializer, PermissionSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+
+class PermissionViewSet(ModelViewSet):
+    queryset = Permission.objects.all()
+    serializer_class = PermissionSerializer
+    pagination_class = None
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated, IsAdmin]
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
