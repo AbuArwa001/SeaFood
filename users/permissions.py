@@ -7,7 +7,7 @@ class IsAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name == "Admin"
+        return getattr(request.user.role, 'role_name', None) == "Admin"
 
 class IsAgent(permissions.BasePermission):
     """
@@ -23,37 +23,37 @@ class IsAgent(permissions.BasePermission):
             "Finance Agent",
             "Admin"
         ]
-        return request.user.role.role_name in agent_roles
+        return getattr(request.user.role, 'role_name', None) in agent_roles
 
 class IsMozambiqueAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name in ["Mozambique Agent", "Admin"]
+        return getattr(request.user.role, 'role_name', None) in ["Mozambique Agent", "Admin"]
 
 class IsLogisticsAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name in ["Logistics Agent", "Admin"]
+        return getattr(request.user.role, 'role_name', None) in ["Logistics Agent", "Admin"]
 
 class IsSalesAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name in ["Sales Agent", "Admin"]
+        return getattr(request.user.role, 'role_name', None) in ["Sales Agent", "Admin"]
 
 class IsFinanceAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name in ["Finance Agent", "Admin"]
+        return getattr(request.user.role, 'role_name', None) in ["Finance Agent", "Admin"]
 
 class IsViewer(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name in ["Viewer", "Admin", "Finance Agent", "Sales Agent", "Logistics Agent", "Mozambique Agent"]
+        return getattr(request.user.role, 'role_name', None) in ["Viewer", "Admin", "Finance Agent", "Sales Agent", "Logistics Agent", "Mozambique Agent"]
 
 class IsOwnerOrAdmin(permissions.BasePermission):
     """
@@ -65,7 +65,7 @@ class IsOwnerOrAdmin(permissions.BasePermission):
             return False
 
         # Admin can do anything
-        if request.user.role.role_name == "Admin":
+        if getattr(request.user.role, 'role_name', None) == "Admin":
             return True
 
         # Read permissions are allowed to any agent for visibility

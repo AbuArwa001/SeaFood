@@ -85,22 +85,3 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-class RoleSerializer(serializers.ModelSerializer):
-    """
-    Docstring for RoleSerializer
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    role_name = models.CharField(max_length=100)
-    permissions = models.ManyToManyField(
-        Permission,
-        blank=True,
-        related_name="roles"
-    )
-    """
-    id = serializers.UUIDField(read_only=True)
-    class Meta:
-        model = Role
-        fields = [
-            'id',
-            'role_name',
-            'permissions',
-        ]
