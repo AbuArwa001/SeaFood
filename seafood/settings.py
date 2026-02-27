@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'productcategories',
     'products',
     'notifications',
+    'audit',
 ]
 
 MIDDLEWARE = [
