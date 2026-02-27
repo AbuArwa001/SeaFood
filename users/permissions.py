@@ -11,67 +11,68 @@ class IsAdmin(permissions.BasePermission):
 
 class IsAgent(permissions.BasePermission):
     """
-    Base permission for any Agent role.
+    Allows access to any Agent role.
     """
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        # List of all agent roles
         agent_roles = [
             "Mozambique Agent", 
             "Logistics Agent", 
             "Sales Agent", 
-            "Finance Agent"
+            "Finance Agent",
+            "Admin"
         ]
-        return request.user.role.role_name in agent_roles or request.user.role.role_name == "Admin"
+        return request.user.role.role_name in agent_roles
 
 class IsMozambiqueAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name == "Mozambique Agent" or request.user.role.role_name == "Admin"
+        return request.user.role.role_name in ["Mozambique Agent", "Admin"]
 
 class IsLogisticsAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name == "Logistics Agent" or request.user.role.role_name == "Admin"
+        return request.user.role.role_name in ["Logistics Agent", "Admin"]
 
 class IsSalesAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name == "Sales Agent" or request.user.role.role_name == "Admin"
+        return request.user.role.role_name in ["Sales Agent", "Admin"]
 
 class IsFinanceAgent(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name == "Finance Agent" or request.user.role.role_name == "Admin"
+        return request.user.role.role_name in ["Finance Agent", "Admin"]
 
 class IsViewer(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return request.user.role.role_name == "Viewer" or request.user.role.role_name == "Admin"
+        return request.user.role.role_name in ["Viewer", "Admin", "Finance Agent", "Sales Agent", "Logistics Agent", "Mozambique Agent"]
 
 class IsOwnerOrAdmin(permissions.BasePermission):
     """
-    Object-level permission to only allow owners of an object to edit it.
-    Assumes the model instance has an `entered_by` attribute.
+    Object-level permission to only allow owners to edit.
+    Read-only allowed for other agents if necessary, but edit restricted.
     """
     def has_object_permission(self, request, view, obj):
-        # Read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
-        # But wait, requirement says "Users can only view and edit data they created unless Admin"
-        # So we should probably restrict Read too if it's not the owner?
-        # The requirement says "Users can only view and edit data they created".
-        # So we need to enforce this in the View's QuerySet AND here for object access.
-        
+        if not request.user or not request.user.is_authenticated:
+            return False
+
         # Admin can do anything
         if request.user.role.role_name == "Admin":
             return True
 
+        # Read permissions are allowed to any agent for visibility
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # Write permissions only to owner
         if hasattr(obj, 'entered_by'):
              return obj.entered_by == request.user
         
