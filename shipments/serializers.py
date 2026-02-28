@@ -46,6 +46,13 @@ class ShipmentSerializer(serializers.ModelSerializer):
             'items',
         ]
 
+    def to_representation(self, instance):
+        from currencies.serializers import CurrencySerializer
+        representation = super().to_representation(instance)
+        if instance.currency:
+            representation['currency'] = CurrencySerializer(instance.currency).data
+        return representation
+
     def create(self, validated_data):
         # Extract the items data from the shipment data
         items_data = validated_data.pop('items')
