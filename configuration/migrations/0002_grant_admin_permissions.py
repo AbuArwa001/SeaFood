@@ -6,8 +6,11 @@ def grant_admin_permissions_and_seed_params(apps, schema_editor):
     ContentType = apps.get_model('contenttypes', 'ContentType')
     SystemParameter = apps.get_model('configuration', 'SystemParameter')
 
-    # Get or create the Admin role
-    admin_role, _ = Role.objects.get_or_create(role_name='Admin')
+    # Get or create the Admin role using the PK from data.json to avoid fixture clashes
+    admin_role, _ = Role.objects.get_or_create(
+        id='02915c14-1092-4733-ae0a-f3067a27b67e',
+        defaults={'role_name': 'Admin'}
+    )
 
     # Get the content type for SystemParameter
     try:
