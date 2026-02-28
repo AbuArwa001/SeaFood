@@ -1,10 +1,6 @@
 from rest_framework import serializers
 from .models import ExchangeRate, Currency, CurrencyMargin
-
-class CurrencySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Currency
-        fields = ['id', 'code', 'name']
+from currencies.serializers import CurrencySerializer
 
 class CurrencyMarginSerializer(serializers.ModelSerializer):
     from_currency_detail = CurrencySerializer(source='from_currency', read_only=True)
@@ -26,7 +22,7 @@ class CurrencyMarginSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        # For backward compatibility, return objects for these fields in the response
+        # For backward compatibility, return objects for these fields in the GET response
         representation['from_currency'] = CurrencySerializer(instance.from_currency).data
         representation['to_currency'] = CurrencySerializer(instance.to_currency).data
         return representation
@@ -55,7 +51,7 @@ class ExchangeRateSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        # For backward compatibility, return objects for these fields in the response
+        # For backward compatibility, return objects for these fields in the GET response
         representation['from_currency'] = CurrencySerializer(instance.from_currency).data
         representation['to_currency'] = CurrencySerializer(instance.to_currency).data
         return representation
