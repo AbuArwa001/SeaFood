@@ -44,3 +44,10 @@ class PaymentSerializer(serializers.ModelSerializer):
             'actual_payment_date',
             'created_at',
         )
+
+    def to_representation(self, instance):
+        from currencies.serializers import CurrencySerializer
+        representation = super().to_representation(instance)
+        if instance.currency:
+            representation['currency'] = CurrencySerializer(instance.currency).data
+        return representation
