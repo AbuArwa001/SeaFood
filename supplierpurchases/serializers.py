@@ -34,8 +34,16 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
             'id',
             'shipment',
             'shipment_details',
+            'currency',
             'entered_by',
             'kg_purchased',
             'image_url',
             'created_at',
         ]
+
+    def to_representation(self, instance):
+        from currencies.serializers import CurrencySerializer
+        representation = super().to_representation(instance)
+        if instance.currency:
+            representation['currency'] = CurrencySerializer(instance.currency).data
+        return representation
