@@ -41,3 +41,24 @@ class SystemParameter(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.key})"
+
+    @classmethod
+    def get_value(cls, key, default=None):
+        try:
+            param = cls.objects.get(key=key)
+            if param.data_type == ParameterType.BOOLEAN:
+                return param.value.lower() == 'true'
+            elif param.data_type == ParameterType.NUMBER:
+                try:
+                    return float(param.value) if '.' in param.value else int(param.value)
+                except ValueError:
+                    return default
+            elif param.data_type == ParameterType.JSON:
+                import json
+                try:
+                    return json.loads(param.value)
+                except json.JSONDecodeError:
+                    return default
+            return param.value
+        except cls.DoesNotExist:
+            return default
