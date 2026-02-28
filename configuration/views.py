@@ -18,10 +18,17 @@ class SystemParameterViewSet(viewsets.ModelViewSet):
         return [IsAdmin()]
 
     def list(self, request, *args, **kwargs):
+        print(f"DEBUG: SystemParameterViewSet.list called by user: {request.user}")
         # Filter public parameters for non-admins
         if not IsAdmin().has_permission(request, self):
+            print("DEBUG: User is NOT Admin, filtering public=True")
             self.queryset = self.queryset.filter(is_public=True)
-        return super().list(request, *args, **kwargs)
+        else:
+            print("DEBUG: User IS Admin, no filtering")
+        
+        response = super().list(request, *args, **kwargs)
+        print(f"DEBUG: Returning {len(response.data.get('results', []))} parameters")
+        return response
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
