@@ -166,6 +166,13 @@ REST_FRAMEWORK = {
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD =  os.getenv("ADMIN_PASSWORD")
 ADMIN_LOCATION = os.getenv("ADMIN_LOCATION", "Headquarters")
+
+# AWS Storage
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', 'seafood')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+
 # ADMIN_ROLES = os.getenv("ADMIN_ROLES", "Admin").split(",")
 ADMIN_ROLES = os.getenv("ADMIN_ROLES", "Admin")
 ROLE_CAPABILITIES = json.loads(
