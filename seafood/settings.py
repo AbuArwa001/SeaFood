@@ -176,3 +176,10 @@ ROLE_CAPABILITIES = json.loads(
 CRONJOBS = [
     ('0 * * * *', 'django.core.management.call_command', ['sync_rates']),
 ]
+
+# FRONTEND SETTINGS
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "noreply@seafood.com")
+
+# EMAIL CONFIGURATION (Using console for development)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
