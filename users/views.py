@@ -92,6 +92,7 @@ class RoleViewSet(ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, IsAdmin]
 class PasswordResetRequestView(APIView):
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
 
     def post(self, request):
         email = request.data.get('email')
@@ -121,6 +122,7 @@ class PasswordResetRequestView(APIView):
 
 class PasswordResetConfirmView(APIView):
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
 
     def post(self, request):
         uidb64 = request.data.get('uid')
