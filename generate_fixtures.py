@@ -252,7 +252,7 @@ for i in range(12):
             "currency_id": currency_ids["USD"],
             "entered_by_id": user_ids[i % len(user_ids)],
             "kg_purchased": str(round(random.uniform(100.0, 1000.0), 2)),
-            "image_url": "",
+            "image_urls":  [],
             "created_at": (base_date + timedelta(days=i*3, hours=2)).isoformat() + "Z"
         }
     })

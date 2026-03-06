@@ -1148,7 +1148,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
       "kg_purchased": "654.91",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-01T12:00:00Z"
     }
   },
@@ -1160,7 +1160,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "8b88c536-8056-4648-9a10-87bdf9d77913",
       "kg_purchased": "830.74",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-04T12:00:00Z"
     }
   },
@@ -1172,7 +1172,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "112747b9-9507-4f20-a683-decfe6e2a454",
       "kg_purchased": "393.93",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-07T12:00:00Z"
     }
   },
@@ -1184,7 +1184,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "630b4e06-d224-4c07-94bd-501e720e4cf9",
       "kg_purchased": "195.69",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-10T12:00:00Z"
     }
   },
@@ -1196,7 +1196,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "a90cf0bf-7863-463d-8d20-5e28c62e44d2",
       "kg_purchased": "403.13",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-13T12:00:00Z"
     }
   },
@@ -1208,7 +1208,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "f3b97f94-21a3-4b98-ac19-2331ca415678",
       "kg_purchased": "357.94",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-16T12:00:00Z"
     }
   },
@@ -1220,7 +1220,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "15df608c-ac34-4833-b8c8-5a05281a13a8",
       "kg_purchased": "424.86",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-19T12:00:00Z"
     }
   },
@@ -1232,7 +1232,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "3e041209-94e7-4b02-9b68-f9deb841ca7d",
       "kg_purchased": "594.62",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-22T12:00:00Z"
     }
   },
@@ -1244,7 +1244,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "171853d3-d74a-4e79-b262-be84fd8ff3d8",
       "kg_purchased": "410.87",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-25T12:00:00Z"
     }
   },
@@ -1256,7 +1256,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "b23874f8-f8a7-49ba-8160-c8c2f39fcfe0",
       "kg_purchased": "597.86",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-28T12:00:00Z"
     }
   },
@@ -1268,7 +1268,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "2ce1134f-d2a4-4bac-a0f6-bffe82743cea",
       "kg_purchased": "862.14",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-01-31T12:00:00Z"
     }
   },
@@ -1280,7 +1280,7 @@
       "currency_id": "ceccb138-d6e8-47fd-8095-3758dd36a6e8",
       "entered_by_id": "8b88c536-8056-4648-9a10-87bdf9d77913",
       "kg_purchased": "832.1",
-      "image_url": "",
+      "image_urls": [],
       "created_at": "2026-02-03T12:00:00Z"
     }
   },

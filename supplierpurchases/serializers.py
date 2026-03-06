@@ -17,7 +17,7 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
         related_name="supplier_purchases"
     )
     kg_purchased = models.DecimalField(max_digits=10, decimal_places=2)
-    image_url = models.TextField(blank=True, null=True)
+    image_urls = models.JSONField(default=list, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     """
@@ -26,7 +26,7 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
     shipment_details = ShipmentSerializer(source='shipment', read_only=True)
     entered_by = serializers.PrimaryKeyRelatedField(read_only=True)
     kg_purchased = serializers.DecimalField(max_digits=10, decimal_places=2)
-    image_url = serializers.CharField(allow_blank=True, allow_null=True, required=False)
+    image_urls = serializers.JSONField(required=False, allow_null=True)
     created_at = serializers.DateTimeField(read_only=True)
     class Meta:
         model = SupplierPurchase
@@ -37,7 +37,7 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
             'currency',
             'entered_by',
             'kg_purchased',
-            'image_url',
+            'image_urls',
             'created_at',
         ]
 
