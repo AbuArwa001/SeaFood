@@ -100,10 +100,12 @@ CORS_ALLOW_CREDENTIALS = True
 DATABASE_URL = os.getenv("DATABASE_URL", None)
 if DATABASE_URL :
     DATABASES = {
-        'default' : {
-            'ENGINE' : 'django.db.backends.postgresql',
-            'NAME' : DATABASE_URL,
-        }
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=0,
+            ssl_require=True
+        )
+
     }
 else:
     DATABASES = {
