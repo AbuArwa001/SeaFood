@@ -24,4 +24,30 @@ class ShipmentViewSet(viewsets.ModelViewSet):
         return Shipment.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(entered_by=self.request.user)
+        instance = serializer.save(entered_by=self.request.user)
+        
+        # If actor is NOT an Admin, notify Admins/Agents of the activity
+        user = self.request.user
+        if user.role.role_name != "Admin":
+            try:
+                from notifications.knock_client import trigger_notification
+                from notifications.knock_recipients import get_role_recipients
+                
+                # Notify Admins and Agents
+                recipients = get_role_recipients()
+                actor_id = str(user.id)
+                actor_name = user.full_name or user.email
+                
+                trigger_notification(
+                    workflow_key="shipment_created",
+                    recipients=recipients,
+                    actor=actor_id,
+                    data={
+                        "shipment_id": str(instance.id)[:8].upper(),
+                        "country_origin": instance.country_origin,
+                        "actor_name": actor_name,
+                        "status": instance.get_status_display() if hasattr(instance, 'get_status_display') else instance.status,
+                    },
+                )
+            except Exception as e:
+                print(f"Failed to trigger shipment_created Knock notification: {e}")

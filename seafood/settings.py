@@ -97,7 +97,16 @@ CORS_ALLOW_CREDENTIALS = True
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
+DATBASE_URL = os.getenv("DATABASE_URL", None)
+if DATABASE_URL :
+    DATABASES = {
+        'default' : {
+            'ENGINE' : 'django.db.backends.postgresql',
+            'NAME' : DATBASE_URL,
+        }
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',

@@ -19,6 +19,34 @@ class SaleViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         try:
-            serializer.save(entered_by=self.request.user)
+            instance = serializer.save(entered_by=self.request.user)
+            
+            # If actor is NOT an Admin, notify Admins/Agents of the activity
+            user = self.request.user
+            if user.role.role_name != "Admin":
+                try:
+                    from notifications.knock_client import trigger_notification
+                    from notifications.knock_recipients import get_role_recipients
+                    
+                    # Notify Admins and Agents
+                    recipients = get_role_recipients()
+                    actor_id = str(user.id)
+                    actor_name = user.full_name or user.email
+                    
+                    trigger_notification(
+                        workflow_key="sale_created",
+                        recipients=recipients,
+                        actor=actor_id,
+                        data={
+                            "sale_id": str(instance.id),
+                            "amount": str(instance.total_sale_amount),
+                            "kg_sold": str(instance.kg_sold),
+                            "actor_name": actor_name,
+                            "currency": instance.currency.code if instance.currency else "N/A",
+                        },
+                    )
+                except Exception as e:
+                    print(f"Failed to trigger sale_created Knock notification: {e}")
+
         except ValueError as e:
             raise ValidationError(str(e))
