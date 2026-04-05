@@ -2,7 +2,7 @@
 Helper to build Knock recipient lists for role-based in-app notifications.
 """
 
-NOTIFY_ROLES = ("Admin", "Finance Agent", "Sales Agent")
+NOTIFY_ROLES = ("Super Admin", "Admin", "Finance Agent", "Sales Agent")
 
 
 def get_role_recipients(extra_roles=None):
