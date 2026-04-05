@@ -33,11 +33,20 @@ class SaleViewSet(viewsets.ModelViewSet):
                     actor_id = str(user.id)
                     actor_name = user.full_name or user.email
                     
+                    # Construct items list from shipment items
+                    try:
+                        shipment_items = instance.shipment.items.select_related('product').all()
+                        items_list = ", ".join([f"{item.product.name} ({item.quantity})" for item in shipment_items])
+                    except:
+                        items_list = "N/A"
+
                     trigger_notification(
                         workflow_key="sale_created",
                         recipients=recipients,
                         actor=actor_id,
                         data={
+                            "total_price": f"{instance.total_sale_amount} {instance.currency.code if instance.currency else ''}",
+                            "items_list": items_list,
                             "sale_id": str(instance.id),
                             "amount": str(instance.total_sale_amount),
                             "kg_sold": str(instance.kg_sold),

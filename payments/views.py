@@ -51,6 +51,8 @@ class PaymentViewSet(viewsets.ModelViewSet):
                     recipients=recipients,
                     actor=actor_id,
                     data={
+                        "amount": amount_payed,
+                        "invoice_id": str(instance.id),
                         "company_name": company_name,
                         "user": {
                             "name": instance.entered_by.full_name or instance.entered_by.username,

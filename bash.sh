@@ -22,21 +22,21 @@ fi
 # Install dependencies
 pip install -r requirements.txt
 
-# Apply database migrations
-python manage.py makemigrations
-python manage.py migrate --run-syncdb
+# # Apply database migrations
+# python manage.py makemigrations
+# python manage.py migrate --run-syncdb
 
-# Destructive commands disabled for production safety
-python manage.py loaddata data.json
-# python reset_passwords.py
-python manage.py seed_users
-# python3 manage.py sync_rates
+# # Destructive commands disabled for production safety
+# python manage.py loaddata data.json
+# # python reset_passwords.py
+# python manage.py seed_users
+# # python3 manage.py sync_rates
 
-# Optional setup scripts (uncomment if needed)
-python manage.py seed_currencies
-python manage.py sync_rates
-# python manage.py create_admin
+# # Optional setup scripts (uncomment if needed)
+# python manage.py seed_currencies
+# python manage.py sync_rates
+# # python manage.py create_admin
 
-# Collect static files
-python manage.py collectstatic --noinput
-python manage.py trigger_overdue_notifications
+# # Collect static files
+# python manage.py collectstatic --noinput
+# python manage.py trigger_overdue_notifications

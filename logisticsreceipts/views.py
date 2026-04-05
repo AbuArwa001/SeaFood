@@ -35,6 +35,7 @@ class LogisticsReceiptViewSet(viewsets.ModelViewSet):
                     recipients=recipients,
                     actor=actor_id,
                     data={
+                        "order_id": str(instance.shipment.id)[:8].upper() if instance.shipment else "N/A",
                         "shipment_id": str(instance.shipment.id)[:8].upper() if instance.shipment else "N/A",
                         "net_received_kg": str(instance.net_received_kg),
                         "facility_location": instance.facility_location,
