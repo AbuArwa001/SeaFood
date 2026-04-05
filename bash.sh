@@ -22,9 +22,9 @@ fi
 # Install dependencies
 pip install -r requirements.txt
 
-# # Apply database migrations
-# python manage.py makemigrations
-# python manage.py migrate --run-syncdb
+# Apply database migrations
+python manage.py makemigrations
+python manage.py migrate --run-syncdb
 
 # # Destructive commands disabled for production safety
 # python manage.py loaddata data.json
@@ -38,5 +38,5 @@ pip install -r requirements.txt
 # # python manage.py create_admin
 
 # # Collect static files
-# python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput
 # python manage.py trigger_overdue_notifications
