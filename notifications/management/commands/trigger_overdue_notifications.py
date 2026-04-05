@@ -61,7 +61,7 @@ class Command(BaseCommand):
                 recipients = all_ids + [email_recipient]
 
                 trigger_notification(
-                    workflow_key="payment_overdue",
+                    workflow_key="payment-overdue",
                     recipients=recipients,
                     actor=actor_id,
                     data={

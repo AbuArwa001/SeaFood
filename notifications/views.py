@@ -40,7 +40,7 @@ class NotificationsView(APIView):
             days_overdue = (today - payment.expected_payment_date).days
             notifications.append({
                 "id": f"payment-overdue-{payment.id}",
-                "type": "payment_overdue",
+                "type": "payment-overdue",
                 "severity": "critical",
                 "title": "Payment Overdue",
                 "message": f"{payment.buyer_name} — {days_overdue} day{'s' if days_overdue != 1 else ''} overdue",
@@ -70,7 +70,7 @@ class NotificationsView(APIView):
                 # Overdue in transit
                 notifications.append({
                     "id": f"shipment-late-{shipment.id}",
-                    "type": "shipment_late",
+                    "type": "shipment-late",
                     "severity": "critical",
                     "title": "Shipment Overdue",
                     "message": f"#{short_id} from {shipment.country_origin} — {abs(days_diff)} day{'s' if abs(days_diff) != 1 else ''} past estimated arrival",
