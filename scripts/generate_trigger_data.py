@@ -36,7 +36,10 @@ def generate_data():
             role=agent_role,
             password="password123",
             first_name="Test",
-            last_name="Agent"
+            middle_name="Agent",
+            last_name="One",
+            phone_number="1234567890",
+            is_email_verified=True
         )
     
     # Get a Logistics user
@@ -49,7 +52,10 @@ def generate_data():
             role=logistics_role,
             password="password123",
             first_name="Test",
-            last_name="Logistics"
+            middle_name="Logistics",
+            last_name="One",
+            phone_number="0987654321",
+            is_email_verified=True
         )
 
     # Get a Currency
@@ -63,8 +69,8 @@ def generate_data():
         # Need to handle ProductCategory and UnitOfMeasure if missing
         from productcategories.models import ProductCategory
         from unitofmeasures.models import UnitOfMeasure
-        cat, _ = ProductCategory.objects.get_or_create(name="Fish", description="Fresh Fish")
-        unit, _ = UnitOfMeasure.objects.get_or_create(name="Kilogram", abbreviation="kg")
+        cat, _ = ProductCategory.objects.get_or_create(name="Fish")
+        unit, _ = UnitOfMeasure.objects.get_or_create(code="kg", description="Kilogram")
         product = Product.objects.create(name="Fresh Salmon", category=cat, unit=unit, description="Premium Salmon")
 
     # Get or Create a Shipment
@@ -87,6 +93,25 @@ def generate_data():
     print(f"Using Agent: {agent_user.email}")
     print(f"Using Shipment: {shipment.id}")
 
+    # --- NEW: IDENTIFY ALL USERS IN KNOCK ---
+    # This ensures both actors (agents) and recipients (admins) exist in Knock.
+    from notifications.knock_client import client, trigger_notification
+    from notifications.knock_recipients import get_role_recipients
+
+    print("\nSynchronizing users with Knock (Identifying profiles)...")
+    all_users = User.objects.filter(is_active=True).select_related('role')
+    for u in all_users:
+        try:
+            client.users.update(
+                user_id=str(u.id),
+                name=u.full_name,
+                email=u.email,
+                phone_number=u.phone_number or ""
+            )
+        except Exception as e:
+            print(f"Failed to identify user {u.email}: {e}")
+    print("User synchronization complete.")
+
     # --- TRIGGER 1: Sale Created ---
     print("\nTriggering 'sale_created'...")
     sale1 = Sale.objects.create(
@@ -99,58 +124,48 @@ def generate_data():
         total_sale_amount=Decimal("262.50"),
         converted_amount=Decimal("262.50")
     )
-    print(f"Created Sale: {sale1.id}")
+    
+    # Construct items list
+    shipment_items = shipment.items.select_related('product').all()
+    items_list = ", ".join([f"{item.product.name} ({item.quantity})" for item in shipment_items])
 
-    sale2 = Sale.objects.create(
-        shipment=shipment,
-        entered_by=agent_user,
-        currency=currency,
-        kg_sold=Decimal("5.0"),
-        quantity_sold=Decimal("5.0"),
-        selling_price=Decimal("22.00"),
-        total_sale_amount=Decimal("110.00"),
-        converted_amount=Decimal("110.00")
+    trigger_notification(
+        workflow_key="sale_created",
+        recipients=get_role_recipients(),
+        actor=str(agent_user.id),
+        data={
+            "total_price": f"262.50 USD",
+            "items_list": items_list,
+            "buyer_name": "Test Customer A",
+            "kg_sold": "10.5",
+            "actor_name": agent_user.full_name,
+        }
     )
-    print(f"Created Sale: {sale2.id}")
+    print(f"Created Sale and triggered 'sale_created' notification.")
 
     # --- TRIGGER 2: Payment Completed ---
     print("\nTriggering 'payment_completed'...")
-    # 2.1 Create a payment (Unpaid)
     payment1 = Payment.objects.create(
         sale=sale1,
         entered_by=agent_user,
         currency=currency,
         buyer_name="Atlantic Seafood Co.",
         amount_paid=Decimal("262.50"),
-        expected_payment_date=timezone.now().date() + timedelta(days=7)
+        expected_payment_date=timezone.now().date() + timedelta(days=7),
+        actual_payment_date=timezone.now()
     )
-    print(f"Created Unpaid Payment: {payment1.id}")
     
-    # 2.2 Update to PAID (this triggers the notification in perform_update logic is handled by VIEW, 
-    # but here we are in shell. The view logic in payments/views.py won't run.
-    # We must manually call trigger_notification if we want to simulate the view behavior accurately.
-    # However, since we are using perform_update in the viewset, I'll just note that here.
-    # If the user wants to see the REAL trigger, they should use the UI or API.
-    # But I can call the trigger function directly in this script to show it works.)
-    
-    from notifications.knock_client import trigger_notification
-    from notifications.knock_recipients import get_role_recipients
-    
-    print("Manually triggering 'payment_completed' notification for test payment...")
     trigger_notification(
         workflow_key="payment_completed",
         recipients=get_role_recipients(),
         actor=str(agent_user.id),
         data={
-            "amount": "262.50",
-            "invoice_id": str(payment1.id),
-            "company_name": shipment.country_origin,
-            "user": {"name": agent_user.full_name},
-            "amount_payed": "262.50",
-            "amount_due": "262.50",
+            "amount": "262.50 USD",
+            "invoice_id": str(payment1.id)[:8].upper(),
             "buyer_name": payment1.buyer_name,
         }
     )
+    print(f"Created Payment and triggered 'payment_completed' notification.")
 
     # --- TRIGGER 3: Shipment Received ---
     print("\nTriggering 'shipment_received'...")
@@ -163,12 +178,24 @@ def generate_data():
         facility_location="Mombasa Cold Storage",
         notes="Shipment arrived in good condition"
     )
-    print(f"Created Receipt: {receipt1.id}")
+
+    trigger_notification(
+        workflow_key="shipment_received",
+        recipients=get_role_recipients(),
+        actor=str(logistics_user.id),
+        data={
+            "order_id": str(shipment.id)[:8].upper(),
+            "actor_name": logistics_user.full_name,
+            "facility_location": "Mombasa Cold Storage",
+            "net_received_kg": "98.5",
+        }
+    )
+    print(f"Created Receipt and triggered 'shipment_received' notification.")
 
     # --- TRIGGER 4: Payment Overdue ---
     print("\nPreparing 'payment_overdue' trigger...")
     overdue_payment = Payment.objects.create(
-        sale=sale2,
+        sale=sale1,
         entered_by=agent_user,
         currency=currency,
         buyer_name="Delayed Foods Ltd",
