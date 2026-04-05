@@ -83,6 +83,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         related_name="users"
     )
     full_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=150, blank=True, null=True)
+    last_name = models.CharField(max_length=150, blank=True, null=True)
     location = models.CharField(max_length=255)
 
     is_active = models.BooleanField(default=True)
