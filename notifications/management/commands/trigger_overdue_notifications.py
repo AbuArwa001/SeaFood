@@ -57,8 +57,16 @@ class Command(BaseCommand):
                 user_name = user.full_name or user.username
 
                 # Merge role recipients + entered_by user + the email recipient
-                all_ids = list(set(role_recipients + [actor_id]))
-                recipients = all_ids + [email_recipient]
+                actor_recipient = {
+                    "id": actor_id,
+                    "email": user.email,
+                    "name": user_name
+                }
+                merged_recipients = {r["id"]: r for r in role_recipients}
+                merged_recipients[actor_recipient["id"]] = actor_recipient
+                merged_recipients[email_recipient["id"]] = email_recipient
+                
+                recipients = list(merged_recipients.values())
 
                 trigger_notification(
                     workflow_key="payment-overdue",
