@@ -43,7 +43,10 @@ class SupplierPurchaseSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         from currencies.serializers import CurrencySerializer
+        from audit.serializers import UserSimpleSerializer
         representation = super().to_representation(instance)
         if instance.currency:
             representation['currency'] = CurrencySerializer(instance.currency).data
+        if instance.entered_by:
+            representation['entered_by_details'] = UserSimpleSerializer(instance.entered_by).data
         return representation

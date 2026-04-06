@@ -39,4 +39,4 @@ python manage.py migrate --run-syncdb
 
 # # Collect static files
 python manage.py collectstatic --noinput
-python manage.py trigger_overdue_notifications
+# python manage.py trigger_overdue_notifications
