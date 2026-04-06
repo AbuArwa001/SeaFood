@@ -40,14 +40,19 @@ class SupplierPurchaseViewSet(viewsets.ModelViewSet):
                 object_name = f"purchases/{date_str}/{shipment_id}_{index}.{file_extension}"
 
                 try:
+                    print(f"Uploading {image_file.name} to {settings.AWS_STORAGE_BUCKET_NAME}")
                     s3_client.upload_fileobj(
                         image_file,
                         settings.AWS_STORAGE_BUCKET_NAME,
                         object_name,
                         ExtraArgs={'ContentType': image_file.content_type}
                     )
-                    image_urls.append(f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.{settings.AWS_S3_REGION_NAME}.amazonaws.com/{object_name}")
-                except NoCredentialsError:
-                    pass
+                    image_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.{settings.AWS_S3_REGION_NAME}.amazonaws.com/{object_name}"
+                    print(f"Success! URL: {image_url}")
+                    image_urls.append(image_url)
+                except Exception as e:
+                    print(f"AWS UPLOAD ERROR: {e}")
+        else:
+            print("No image_files found in request!")
 
         serializer.save(entered_by=self.request.user, image_urls=image_urls)
