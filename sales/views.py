@@ -30,7 +30,11 @@ class SaleViewSet(viewsets.ModelViewSet):
                     
                     # Notify Admins and Agents
                     recipients = get_role_recipients()
-                    actor_id = str(user.id)
+                    actor_payload = {
+                        "id": str(user.id),
+                        "email": user.email,
+                        "name": user.full_name or user.username
+                    }
                     actor_name = user.full_name or user.email
                     
                     # Construct items list from shipment items
@@ -43,7 +47,7 @@ class SaleViewSet(viewsets.ModelViewSet):
                     trigger_notification(
                         workflow_key="sale_created",
                         recipients=recipients,
-                        actor=actor_id,
+                        actor=actor_payload,
                         data={
                             "total_price": f"{instance.total_sale_amount} {instance.currency.code if instance.currency else ''}",
                             "items_list": items_list,

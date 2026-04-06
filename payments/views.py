@@ -44,12 +44,16 @@ class PaymentViewSet(viewsets.ModelViewSet):
                 amount_payed = str(instance.amount_paid)
                 company_name = instance.sale.shipment.country_origin  # closest to company
 
-                actor_id = str(self.request.user.id)
+                actor_payload = {
+                    "id": str(self.request.user.id),
+                    "email": self.request.user.email,
+                    "name": self.request.user.full_name or self.request.user.username
+                }
 
                 trigger_notification(
                     workflow_key="payment_completed",
                     recipients=recipients,
-                    actor=actor_id,
+                    actor=actor_payload,
                     data={
                         "amount": amount_payed,
                         "invoice_id": str(instance.id),

@@ -35,13 +35,17 @@ class ShipmentViewSet(viewsets.ModelViewSet):
                 
                 # Notify Admins and Agents
                 recipients = get_role_recipients()
-                actor_id = str(user.id)
+                actor_payload = {
+                    "id": str(user.id),
+                    "email": user.email,
+                    "name": user.full_name or user.username
+                }
                 actor_name = user.full_name or user.email
                 
                 trigger_notification(
                     workflow_key="shipment_created",
                     recipients=recipients,
-                    actor=actor_id,
+                    actor=actor_payload,
                     data={
                         "shipment_id": str(instance.id)[:8].upper(),
                         "country_origin": instance.country_origin,

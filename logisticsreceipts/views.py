@@ -27,13 +27,17 @@ class LogisticsReceiptViewSet(viewsets.ModelViewSet):
                 
                 # Notify Admins and Agents
                 recipients = get_role_recipients()
-                actor_id = str(user.id)
+                actor_payload = {
+                    "id": str(user.id),
+                    "email": user.email,
+                    "name": user.full_name or user.username
+                }
                 actor_name = user.full_name or user.email
                 
                 trigger_notification(
                     workflow_key="shipment_received",
                     recipients=recipients,
-                    actor=actor_id,
+                    actor=actor_payload,
                     data={
                         "order_id": str(instance.shipment.id)[:8].upper() if instance.shipment else "N/A",
                         "shipment_id": str(instance.shipment.id)[:8].upper() if instance.shipment else "N/A",
