@@ -29,15 +29,18 @@ def get_client_ip(request):
     return ip
 
 def log_activity(instance, action, user=None):
+    from .middleware import get_current_user
+    
     ct = ContentType.objects.get_for_model(instance)
     
-    # Try to get the user if not provided (e.g. from instance if it has entered_by)
     if not user:
-        if hasattr(instance, 'entered_by'):
+        # 1. ThreadLocal user (most precise)
+        thread_user = get_current_user()
+        if thread_user:
+            user = thread_user
+        # 2. Fallback to entered_by if available
+        elif hasattr(instance, 'entered_by'):
             user = instance.entered_by
-        elif action == 'DELETE':
-            # For delete, we might not have the user context easily here without middleware
-            pass
 
     ActivityLog.objects.create(
         user=user,
